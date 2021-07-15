@@ -1,0 +1,30 @@
+<% provide(:title, @user.name) %>
+<div class="user-wrapper">
+  <div class="icon">
+    <% if @user.image? %>
+      <%= image_tag @user.image.url, class: "user-image" %>
+    <% else %>
+      <%=  image_tag "default_user.jpeg", class: "user-image" %>  
+    <% end %>
+  </div>
+  <div class="basic-info">
+    <h1 class="user-name">
+      <%= @user.name %>
+      <%# もともと if logged_in?でrender 'follow_form'%>
+    </h1>
+    <section class="stats">
+    <%#= render 'shared/stats' %>
+    </section>
+  </div>
+  <div class="user-microposts">
+    <div class="microposts-square">
+    <%# if @user.microposts.any? %>
+      <h3>Microposts (<%#= @user.microposts.count %>)</h3>
+      <ol class="microposts">
+        <%#= render @microposts %>
+      </ol>
+      <%#= will_paginate @microposts %>
+    <%# end %>
+    </div>
+  </div>
+</div>
