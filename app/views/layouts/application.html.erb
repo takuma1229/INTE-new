@@ -1,15 +1,38 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
+    <meta charset="UTF-8">
     <title><%= full_title(yield(:title)) %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+    <%= render 'layouts/shim' %>
+    <!--adobe fontの読み込み-->
+    <script>
+  (function(d) {
+    var config = {
+      kitId: 'rqz6lfu',
+      scriptTimeout: 3000,
+      async: true
+    },
+    h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+  })(document);
+</script>
+    <script src="https://kit.fontawesome.com/e7e6e7f27c.js" crossorigin="anonymous"></script>
 
+  </head>
   <body>
-    <%= yield %>
+    <%= render 'layouts/header' %>
+    <!--<div class="container">-->
+      <%= flash.each do |message_type, message| %>
+        <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+      <% end %>
+      <%= yield %>
+    <!--</div>  -->
+    <%= debug(params) if Rails.env.development? %>
+    <%= render 'layouts/footer' %>
   </body>
 </html>

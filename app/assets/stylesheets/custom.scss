@@ -1,0 +1,877 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+// @import "@fortawesome/fontawesome-free/scss/fontawesome";
+
+
+/*universal*/ 
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// html{
+//   height: 100%;
+// }
+
+body{
+  background-color: #F1C475;
+  font-family: a-otf-ud-shin-maru-go-pr6n, sans-serif;
+  color: white;
+  height: 100%;
+  // position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header{
+  height: 80px ;
+  background-color: #EC985B;
+  border: 1px solid white;
+  width: 100%;
+  position: fixed;
+  z-index: 10;
+  .main-logo{
+    height: 120px;
+    float: left;
+    margin-left: -13px;
+    margin-top: -23px;
+    }
+  .dropdown{
+    float: right;
+    .bars{
+      color: white;
+      font-size: 61px;
+      margin-right: 20px;
+      margin-top: 8px;
+    }
+    ::marker{
+      display: none;
+    }
+    .dropdown-menu{
+      height: 237px;
+      width: 100%;
+      li{
+        font-size: 25px;
+        margin-top: 10px;
+        .color{
+          color: black;
+          display: inline;
+          margin-left: 33px;
+        }
+        a{
+          display: inline;
+          padding: 0;
+        }
+      }
+      .logout{
+        font-size: 20px;
+        margin-left: 30px;
+        border-radius: 100px;
+        margin-top: 19px;
+      }
+    }
+  }
+  .login{
+    float: right;
+    margin-right: 15px;
+    font-size: 25px;
+    border-radius: 100px;
+    margin-top: 17px;
+  }
+  .logout-pc{
+    display: none;
+  }
+  }
+  
+.language-wrapper{
+  height: 100%;
+  .container{
+    padding: 36% 0;
+    .choose-language{
+      margin-bottom: 60px;
+      h1{
+        color: #FFFFFF;
+        font-size: 25px;
+        text-align: center;
+      }
+    }
+   .buttons{
+     width: 80%;
+     margin: 0 auto;
+     .btn{
+       font-size: 30px;
+       height: 65px;
+       width: 100%;
+       margin-bottom: 30px;
+       border-radius: 69px;
+     }
+   }
+  }
+}
+
+.english-home-wrapper{
+  // .container{
+    .introduction{
+      padding-top: 90px;
+      padding-bottom: 100px;
+      background-image: image-url('home-bg.png') ;
+      background-size: cover;
+      background-position: center;
+      height: 640px;
+      .main-intro{
+        h1{
+          text-align: center;
+          font-size: 20px;
+          line-height: 12px;
+        }
+        h2{
+          display: none;
+        }
+      }
+      .connect{
+          padding: 50px 0 0 13%;
+          
+          p{
+            font-size: 20px;
+            font-family: forma-djr-display, sans-serif;
+            font-weight: 300;
+            font-style: normal;
+            
+            letter-spacing: 2px;
+          }
+        }
+      .connect-jp{
+          p{
+            letter-spacing: 0px;
+          }
+        }
+        .free{
+          padding: 50px 0 0 13%;
+          font-family: forma-djr-display, sans-serif;
+          font-weight: 400;
+          font-style: normal;
+          letter-spacing: 1.5px;
+          font-size: 18px;
+          .yellow{
+            color: #067EFF;
+            font-family: nimbus-sans-condensed, sans-serif;
+            font-weight: 700;
+            font-style: normal;
+            font-size: 21px;
+          }
+        }
+        .buttons{
+           width: 80%;
+           margin: 0 auto;
+           padding-top: 0px;
+             .btn{
+               font-size: 20px;
+               height: 50px;
+               width: 100%;
+               margin-bottom: 10px;
+               border-radius: 69px;
+            }
+   }
+    }
+    .what-is-inte{
+      .title{
+        text-align: center;
+        padding: 37px 0 37px 0;
+        font-size: 37px;
+      }
+      .description{
+        width: 80%;
+        margin: 0 auto;
+        margin-bottom: 30px;
+        text-align: center;
+        p{
+          line-height: 19px;
+          margin-bottom: 0;
+          font-size: 15px;
+        }
+      }
+      .buttons{
+           width: 80%;
+           margin: 0 auto;
+           padding-top: 10px;
+             .btn{
+               font-size: 20px;
+               height: 50px;
+               width: 100%;
+               margin-bottom: 30px;
+               border-radius: 69px;
+            }
+   }
+    }
+  // }
+}
+
+.signup-wrapper{
+  overflow: hidden;
+  .Signup{
+  font-size: 40px;
+  text-align: center;
+  margin: 100px 0 40px 0;
+  }
+  .signup-forms{
+    width: 80%;
+    margin: 0 auto;
+    font-family: a-otf-ud-shin-maru-go-pr6n, sans-serif;
+    label{
+      display: block;
+      text-align: center;
+      font-size: 25px;
+      margin-bottom: 10px;
+    }
+    input{
+      height: 25px;
+      margin-bottom: 20px;
+    }
+    .image-form{
+      height: 40px;
+    }
+    .create{
+      font-size: 21px;
+      height: 50px;
+      border-radius: 100px;
+      margin-top: 50px;
+    }
+    .buttons{
+           width: 80%;
+           margin: 0 auto;
+           padding-top: 70px;
+             .btn{
+               font-size: 25px;
+               height: 50px;
+               width: 100%;
+               margin-bottom: 30px;
+               border-radius: 69px;
+            }
+   }
+  }
+}
+
+.after-wrapper{
+  margin-top: 100px;
+}
+
+.user-detail-wrapper{
+  overflow: hidden;
+  .introduction{
+    padding-top: 70px;
+    width: 80%;
+    margin: 0 auto;
+    h3{
+      font-size: 14px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  }
+  .user-detail-forms{
+    padding-top: 20px;
+    width: 80%;
+    margin: 0 auto;
+    label{
+      font-size: 20px;
+      display: block;
+      text-align: center;
+    }
+    select, input{
+      height: 20px;
+    }
+    select{
+      width: 70%;
+      display: block;
+      margin: 0 auto;
+      margin-bottom: 25px;
+    }
+    .self-intro{
+      height: 100px;
+      margin-bottom: 20px;
+    }
+    input::placeholder{
+      font-size: 8px;
+    }
+    .btn{
+               font-size: 25px;
+               height: 50px;
+               width: 100%;
+               margin-bottom: 30px;
+               border-radius: 69px;
+               margin-top: 60px;
+            }
+  }
+}
+
+.user-home-wrapper{
+  padding-top: 60px;
+  .micropost-form{
+    width: 90%;
+    margin: 0 auto;
+    color: black;
+    .text-form{
+      height: 150px;
+      background-color: #EFCC8E;
+    }
+  }
+  .micropost-feed{
+    width: 90%;
+    margin: 0 auto;
+    .microposts{
+      .micropost-wrapper{
+        .right-part{
+          img{
+            display: block;
+          }
+        }
+      }
+    }
+  }
+  
+  
+}
+
+.user-wrapper{
+  padding-top: 65px;
+  padding-left: 20px;
+  .user-image{
+    object-fit: cover;
+    height: 80px;
+    width: 80px;
+    overflow: hidden;
+    margin-top: 20px;
+    float: left; 
+    margin-right: 10px;
+  }
+  img{
+    border-radius: 200px;
+  }
+  .basic-info{
+    .user-name{
+      font-size: 25px;
+    }
+  }
+  .user-microposts{
+    li{
+      list-style: none;
+    }
+    .microposts-square{
+      .microposts{
+        .micropost-part{
+          .right-part{
+            .delete-button{
+              text-decoration: underline;
+              color: blue;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.login-wrapper{
+  margin-top: 20%;
+  .title{
+    font-size: 50px;
+    text-align: center;
+    padding: 40px 0 30px 0;
+  }
+  .forms{
+    width: 80%;
+    margin: 0 auto;
+    label{
+      font-size: 25px;
+      display: block;
+      text-align: center;
+    }
+    input{
+      height: 25px;
+      font-size: 25px;
+    }
+    input:invalid{
+      border: solid 1px red;
+    }
+    .login{
+      height: 50px;
+      margin: 30px 0 30px 0;
+      border-radius: 100px;
+    }
+    p{
+      font-size: 20px;
+      text-align: center;
+      a{
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.following-follower-page{
+  padding-top: 80px;
+  .user_info{
+    display: flex;
+    .left-part{
+      img{
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 1000px;
+        margin-left: 20px;
+        margin-right: 10px;
+      }
+    }
+    .right-part{
+      margin-top: 20px;
+      a{
+        font-size: 20px;
+        color: white;
+        &:hover{
+          text-decoration: underline;
+        }
+      }
+      .stats{
+        a{
+          font-size: 15px;
+        }
+      }
+    }
+  }
+  .followings-followers{
+    h2{
+      text-align: center;
+    }
+    .user-infos{
+      width: 240px;
+      margin: 0 auto;
+      padding: 5px 10px;
+      border: 1px solid white;
+      display: flex;
+      .user-image{
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 1000px;
+      }
+      a{
+        margin-top: 20px;
+        margin-left: 10px;
+      }
+    }
+    }
+    .pagination{
+      text-align: center;
+    }
+}
+
+.edit-wrapper{
+  margin-top: 70px;
+  h1{
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  input, select, textarea{
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+  select{
+    display: block;
+  }
+  label{
+    display: block;
+    text-align: center;
+  }
+  .btn{
+    display: block;
+    margin: 0 auto;
+    width: 60%;
+    border-radius: 100px;
+  }
+  .update{
+    margin-top: 50px;
+  }
+  .change-email{
+    background-color: white;
+    margin-top: 50px;
+    width: 40%;
+  }
+  .change-password{
+    background-color: #9B9E98;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    color: white;
+    width: 40%;
+  }
+  .delete-user{
+    margin-top: 40px;
+    width: 40%;
+    background-color: red;
+    color: yellow;
+    font-weight: 500;
+  }
+}
+
+.edit-email-wrapper{
+  padding: 80px 0;
+  text-align: center;
+  width: 100%; 
+  overflow: hidden;
+  p{
+    margin-top:  20px;
+    font-size: 20px;
+  }
+  label{
+    font-size: 20px;
+    margin-top: 20px;
+  }
+  .new-email-form{
+    width: 80%;
+    margin: 0 auto;
+    height: 20px;
+    margin-bottom: 30px;
+  }
+  .create{
+    width: 50%;
+    margin: 0 auto;
+    border-radius: 100px;
+  }
+  .buttons{
+     .change-email{
+       background-color: red;
+     }
+     .change-email{
+       background-color: yellow;
+     }
+  }
+  .description{
+    font-size: 15px;
+    width: 80%;
+    margin: 0 auto;  
+    margin-top: 10px;
+  }
+}
+
+.delete-wrapper{
+  margin-top: 190px;
+  text-align: center;
+  h1{
+    color: red;
+  }
+  p{
+    color: black;
+    span{
+      font-size: 20px;
+      color: red;
+    }
+  }
+  .buttons{
+    .btn{
+      display: block;
+      width: 42%;
+      border-radius: 100px;
+      font-size: 30px;
+      line-height: 25px;
+      height: 40px;
+      margin: 0 auto;
+      margin-top: 30px;
+    }
+    .no{
+      background-color: #6EEB4C;
+      color: white;
+    }
+    .delete{
+      background-color: red;
+      color: yellow;
+    }
+  }
+}
+
+
+footer{
+  height: 44px;
+  background-color: #DFF1DF;
+  border: 1px solid white;
+  // position: absolute;
+  // bottom: 0px;
+  margin-top: auto;
+  width:  100%;
+  .container{
+    .copyrights{
+      margin-top: 10px;
+      p{
+        color: black;
+        font-size: 10px;
+        text-align: center;
+        margin: 0;
+        line-height: 13px;
+      }
+    }
+  }
+  
+}
+
+/* mixins, variables, etc. */
+
+$gray-medium-light: #eaeaea;
+
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
+/* miscellaneous */
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
+}
+
+/* forms */
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+
+.checkbox {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+    font-size: 13px;
+  }
+}
+
+#session_remember_me {
+  width: auto;
+  margin-left: 0;
+  margin-top: 10px;
+}
+
+input {
+  // height: auto !important;
+}
+
+#error_explanation{
+  color: red;
+  font-size: 40px;
+  ul{
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors{
+  @extend .has-error;
+  .form-control{
+    color: $state-danger-text;
+  }
+}
+
+/* flash */
+.flash{
+  font-size: 30px;
+}
+
+// alert 
+.alert{
+  margin-top: 80px;
+}
+
+// microposts
+.micropost-wrapper{
+ .micropost-part{
+   display: flex;
+   border: solid 1px white;
+   padding: 10px;
+  .left-part{
+    // float: left;
+    margin-right: 15px;
+    .micropost-user-image{
+      img{
+        height: 30px;
+        width: 30px;
+        object-fit: cover;
+        overflow: hidden;
+      }
+    }
+  }
+  a{
+    color: white;
+  }
+  .right-part{
+    .user{
+      font-size: 20px;
+      display: block;
+    }
+    .timestamp{
+      display: block;
+      font-size: 12px;
+      margin-top: 10px;
+    }
+    .delete-button{
+      text-decoration: underline;
+      color: blue;
+    }
+  }
+ } 
+}
+
+//stats
+.stats-wrapper{
+  .stats{
+    a{
+      color: white;
+    }
+  }
+}
+
+//follow_form
+.follow-form-wrapper{
+  #follow-form{
+    input{
+      display: inline;
+      border-radius: 1000px;
+      width: 50%;
+      margin-top: 20px;
+      &:hover{
+        opacity: 0.9;
+      }
+    }
+    .btn-dark{
+      background-color: #817F85;
+    }
+  }
+}
+
+// レスポンシブ
+@media screen and (min-width: 1024px) {
+//この中のcssプロパティは画面サイズが1024px以上の時のみ適応します
+//以下一部だけ抜粋
+  header{
+    height: 80px;
+    .main-logo{
+      height: 100px;
+      margin-top: -10px;
+      margin-left: 20px;
+    }
+    .dropdown{
+      display: none;
+    }
+    .menu-pc{
+      .logout-pc{
+        display: inline;
+        float: right;
+        font-size: 20px;
+        margin-right: 20px;
+        margin-top: 17px;
+        border-radius: 100px;
+      }
+    }
+  }
+  
+  .language-wrapper{
+    .container{
+      padding: 19% 0;
+      .choose-language{
+        h1{
+          font-size: 40px;
+        }
+      }
+      .buttons{
+        display: flex;
+        margin: 0 auto;
+        .btn{
+          width: 50;
+          flex: auto;
+        }
+        .eng{
+          margin-right: 100px;
+        }
+      }
+    }
+  }
+  
+  .english-home-wrapper{
+    .introduction{
+      height: 665px;
+      .main-intro{
+        h1{
+          text-align: left;
+          display: none;
+        }
+        .main-intro-pc{
+          width: 100%;
+          text-align: center;
+          h2{
+            display: inline;
+        }
+        }
+      }
+      .connect{
+          padding-left: 13%;
+          p{
+            font-size: 25px;
+          }
+        }
+        .buttons{
+          margin-top: 40px;
+          width: 40%;
+          .btn{
+            margin-bottom: 20px;
+          }
+        }
+    }
+    .what-is-inte{
+      .description{
+        p{
+          font-size: 20px;
+        }
+      }
+      .buttons{
+        width: 40%;
+      }
+    }
+   }
+   
+   .edit-wrapper{
+     .buttons{
+       display: flex;
+       margin-top: 40px;
+       .change-email, .change-password{
+         margin-top: 0px;
+       }
+       .change-email{
+         height: 35px;
+       }
+     }
+   }
+   
+  // なんか適用されない！
+  // .login-wrapper{
+  //     margin-top: 10%;
+  //     margin-right: 40%;
+  // }
+  
+  .edit-email-wrapper{
+    label{
+      font-size: 25px;
+    }
+    p{
+      font-size: 25px;
+    }
+  }
+}
