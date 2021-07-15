@@ -10,6 +10,8 @@ module INTE
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
+    #ユーザー画像機能用の設定
+    config.autoload_paths += Dir[Rails.root.join('app', 'uploaders')]
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
