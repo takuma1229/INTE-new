@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       # @user.send_activation_email
-      #log_in @user
+      log_in @user
       flash[:info] = "Please check your email to activate your account."
       # redirect_to after_signup_path
       #redirect_to new_detail_path
