@@ -19,6 +19,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     delete session_path
     assert_not is_logged_in?
     assert_redirected_to root_url
+    delete session_path
     follow_redirect!
     assert_select "a[href=?]", sessions_path
     assert_select "a[href=?]", session_path(@user),      count: 0
