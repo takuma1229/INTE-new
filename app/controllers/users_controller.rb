@@ -27,7 +27,7 @@ class UsersController < ApplicationController
       flash[:info] = "Please check your email to activate your account."
       # redirect_to after_signup_path
       #redirect_to new_detail_path
-      redirect_to @user
+      redirect_to details_path
     else
       render 'new'
     end
@@ -54,15 +54,14 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find_by(id: params[:id])
-    @detail = Detail.find_by(user_id: @user.id)
     #binding.pry
-    if @user.update(user_params) && @user.detail.update(detail_params)
-      if @user.save && @user.detail.save
+    if @user.update(user_params)
+      if @user.save
       redirect_to @user
       end
     else
       flash[:danger] = "Invalid information is included."
-      render 'edit'
+      redirect_to details_path
     end
   end
     
@@ -112,7 +111,18 @@ class UsersController < ApplicationController
         :email, 
         :image, 
         :password, 
-        :password_confirmation #,
+        :password_confirmation,
+        :mother_tongue,
+        :japanese_level,
+        :english_level,
+        :gender,
+        :region,
+        :purpose,
+        :self_introduction,
+        :skype,
+        :discord,
+        :other,
+        :authenticity_token
           )
     end
     # .merge(user_id: User.find_by(id: params[:id]).id) #これはつけた方がいいですか？
