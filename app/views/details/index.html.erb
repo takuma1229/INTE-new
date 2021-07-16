@@ -1,0 +1,60 @@
+<% provide(:title, "user detail") %>
+
+<div class="user-detail-wrapper">
+  <div class="introduction">
+    <h3>①Authorize your account via sent Email.</h3>
+    <h3>②Let's register your user informations! You can change it later.</h3>
+  </div>
+  
+  <div class="row user-detail-forms">
+    <div class="col-md-6 col-md-offset-3">
+      <%= form_with(model: @user, local: true) do |f| %>
+        
+      
+        <%= f.label :mother_tongue, "Mother Tongue" %>
+        <%= f.select :mother_tongue, [["English", "English"], ["Japanese", "Japanese"], 
+        ["Other","other"]], include_blank: "Please select.", class:"form-control" %>
+        
+        <%= f.label :japanese_level, "Japanese Level" %>
+        <%= f.select :japanese_level, [["Beginner", "Beginner"], ["Capable of quite basic communication", "Capable of quite basic communication"], 
+        ["Capable of daily conversation | 日常会話ができる","Capable of daily conversation | 日常会話ができる"], ["Capable of advanced conversation | 難しい内容の会話ができる","Capable of advanced conversation | 難しい内容の会話ができる"], ["Almost native level | ネイティブとほとんど同レベル","Almost native level | ネイティブとほとんど同レベル"],
+        ["Native | ネイティブ","Native | ネイティブ"]], include_blank: "Please select.", class:"form-control" %>
+        
+        <%= f.label :english_level, "English Level | 英語のレベル" %>
+        <%= f.select :english_level, [["Beginner | 初心者", "Beginner | 初心者"], ["Capable of quite basic communication | 簡単な会話ならできる", "Capable of quite basic communication | 簡単な会話ならできる"], 
+        ["Capable of daily conversation | 日常会話ができる","Capable of daily conversation | 日常会話ができる"], ["Capable of advanced conversation | 難しい内容の会話ができる","Capable of advanced conversation | 難しい内容の会話ができる"], ["Almost native level | ネイティブとほとんど同レベル","Almost native level | ネイティブとほとんど同レベル"],
+        ["Native | ネイティブ","Native | ネイティブ"]], include_blank: "Please select.", class:"form-control" %>
+        
+        <%= f.label :gender, "Gender(optional) | ジェンダー（任意）" %>
+        <%= f.select :gender, [["he/him | 男性", "he/him | 男性"], ["she/her | 女性", "she/her | 女性"], 
+        ["they/them | その他","they/them | その他"], ["I don't want to tell | 言いたくない","I don't want to tell | 言いたくない"]], include_blank: "Please select.", class:"form-control" %>
+        
+        <%= f.label :region, "Region  | 地域" %>
+        <%= f.select :region, [["Asia | アジア", "Asia | アジア"], ["Europe ｜ヨーロッパ", "Europe | ヨーロッパ"], 
+        ["Africa | アフリカ","Africa | アフリカ"], ["North/Central America | 北/中央アメリカ","North/Central America | 北/中央アメリカ"], ["South America | 南アメリカ","South America | 南アメリカ"],
+        ["Oceania | オセアニア","Oceania | オセアニア"], ["Other | その他","Other | その他"]], include_blank: "Please select.", class:"form-control" %>
+        
+        <%= f.label :purpose, "Purpose of Learning | 学習目的" %>
+        <%= f.select :purpose, [["Business | 仕事", "Business | 仕事"], ["School Classes | 学校の授業", "School Classes | 学校の授業"], 
+        ["Entrance Exam | 受験","Entrance Exam | 受験"], ["Trip | 旅行","Trip | 旅行"], ["Want to talk with Foreingers | 外国の人と話したい","Want to talk with Foreingers | 外国の人と話したい"], 
+        ["Qualifying Exam | 資格試験","Qualifying Exam | 資格試験"], ["Hobby | 趣味","Hobby | 趣味"], ["Other | その他", "Other | その他"]], include_blank: "Please select.", class:"form-control" %>
+        
+        <%= f.label :self_introduction, "Self Introduction | 自己紹介" %>
+        <%= f.text_area :self_introduction, class: 'form-control self-intro', placeholder: "It is recommended that you write in simple English. 英語で書くことをお勧めします。簡単な文でも問題ありません。" %>
+        
+        <%= f.label :skype, "URL of Your SNS 1 (optional) | SNSリンク1（任意）" %>
+        <%= f.text_field :skype, class: 'form-control' %>
+        
+        <%= f.label :discord, "URL of Your SNS 2 (optional) | SNSリンク2（任意）" %>
+        <%= f.text_field :discord, class: 'form-control' %>
+        
+        <%= f.label :other, "URL of Your SNS 3 (optional) | SNSリンク3（任意）" %>
+        <%= f.text_field :other, class: 'form-control' %>
+        
+        <%= f.text_field :user_id, type: "hidden", value: "#{current_user.id}" %>
+        
+        <%= f.submit "Send | 送信", class: "btn btn-primary create" %>
+      <% end %>
+    </div>
+  </div>
+</div>
