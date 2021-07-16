@@ -9,13 +9,16 @@
         <li><i class="fas fa-home color"></i><%= link_to "Home", "#" %></li>
         <li><i class="far fa-envelope color"></i><%= link_to "DM", "#" %></li>
         <li><i class="fas fa-search color"></i><%= link_to "Search", "#" %></li>
-        <%= link_to "Log out", session_path, method: :delete, class: "logout btn btn-primary"  %>
+        <%#= link_to "Log out", session_path(@user), method: :delete, class: "logout btn btn-primary"  %>
+        <%= link_to "Log out", root_path, method: :delete, class: "logout btn btn-primary"  %>
+
       </ul>
     </li>
     <!--ここにuserimage追加したい-->
     
     <div class="menu-pc">
-      <%= link_to "Log out", session_path, method: :delete, class: "logout-pc d-none d-lg-inline btn btn-primary"  %>
+      <%#= link_to "Log out", session_path(@user), method: :delete, class: "logout-pc d-none d-lg-inline btn btn-primary"  %>
+      <%= link_to "Log out", session_path, method: :delete, class: "logout btn btn-primary"  %>
     </div>
   <% else %>
     <%= link_to "Log in", sessions_path, class: "btn btn-primary login" %>
