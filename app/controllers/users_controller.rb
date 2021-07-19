@@ -27,11 +27,31 @@ class UsersController < ApplicationController
       flash[:info] = "Please check your email to activate your account."
       # redirect_to after_signup_path
       #redirect_to new_detail_path
-      redirect_to @user
+      redirect_to detail_user_path(@user)
     else
       render 'new'
     end
   end
+
+  def detail
+    @user = User.find(params[:id])
+  end
+
+  def detailcreate
+    @user = User.find_by(id: params[:id])
+    #binding.pry
+    if @user.update(user_detail_params)
+      if @user.save
+        redirect_to @user
+      end
+    else
+      binding.pry
+      flash[:danger] = "Invalid information is included."
+      render 'detail'
+    end
+  end
+  
+  
   
   # def details
   # end
@@ -54,10 +74,9 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find_by(id: params[:id])
-    @detail = Detail.find_by(user_id: @user.id)
     #binding.pry
-    if @user.update(user_params) && @user.detail.update(detail_params)
-      if @user.save && @user.detail.save
+    if @user.update(user_params)
+      if @user.save
       redirect_to @user
       end
     else
@@ -112,14 +131,41 @@ class UsersController < ApplicationController
         :email, 
         :image, 
         :password, 
-        :password_confirmation #,
+        :password_confirmation,
+        :mother_tongue,
+        :japanese_level,
+        :english_level,
+        :gender,
+        :region,
+        :purpose,
+        :self_introduction,
+        :skype,
+        :discord,
+        :other,
+        :authenticity_token
           )
     end
     # .merge(user_id: User.find_by(id: params[:id]).id) #これはつけた方がいいですか？
     
-    def detail_params
-      params.fetch(:detail, {}).permit(:authenticity_token, :user_id, :mother_tongue, :japanese_level, :english_level,
-                                    :gender, :region, :purpose, :self_introduction, :sns_1, :sns_2, :sns_3)
+    def user_detail_params #strong parameterのネスト化実装
+      params.permit(
+        :name, 
+        :email, 
+        :image, 
+        :password, 
+        :password_confirmation,
+        :mother_tongue,
+        :japanese_level,
+        :english_level,
+        :gender,
+        :region,
+        :purpose,
+        :self_introduction,
+        :skype,
+        :discord,
+        :other,
+        :authenticity_token
+          )
     end
     
     
