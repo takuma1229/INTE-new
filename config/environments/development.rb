@@ -24,6 +24,9 @@ Rails.application.configure do
     }
   else
     config.action_controller.perform_caching = false
+    
+    host = 'localhost:3000'                     # ローカル環境
+    config.action_mailer.default_url_options = { host: host, protocol: 'http' }
 
     config.cache_store = :null_store
   end
