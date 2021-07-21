@@ -77,11 +77,11 @@ class UsersController < ApplicationController
     #binding.pry
     if @user.update(user_params)
       if @user.save
-      redirect_to @user
+        redirect_to @user
+      else
+        flash[:danger] = "Invalid information is included."
+        render 'edit'
       end
-    else
-      flash[:danger] = "Invalid information is included."
-      render 'edit'
     end
   end
     
@@ -149,11 +149,11 @@ class UsersController < ApplicationController
     
     def user_detail_params #strong parameterのネスト化実装
       params.permit(
-        :name, 
-        :email, 
-        :image, 
-        :password, 
-        :password_confirmation,
+        # :name, 
+        # :email, 
+        # :image, 
+        # :password, 
+        # :password_confirmation,
         :mother_tongue,
         :japanese_level,
         :english_level,
