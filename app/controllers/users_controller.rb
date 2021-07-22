@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   def detailcreate
     @user = User.find_by(id: params[:id])
     #binding.pry
-    if @user.update(user_detail_params)
+    if @user.update(user_params)
       if @user.save
         redirect_to @user
       end
@@ -76,7 +76,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find_by(id: params[:id])
     #binding.pry
-    if @user.update(user_params)
+    if @user.update_attribute(user_params)
       if @user.save
         redirect_to @user
       else
@@ -142,8 +142,8 @@ class UsersController < ApplicationController
         :self_introduction,
         :skype,
         :discord,
-        :other,
-        :authenticity_token
+        :other#,
+        # :authenticity_token
           )
     end
     # .merge(user_id: User.find_by(id: params[:id]).id) #これはつけた方がいいですか？
@@ -164,8 +164,8 @@ class UsersController < ApplicationController
         :self_introduction,
         :skype,
         :discord,
-        :other,
-        :authenticity_token
+        :other#,
+        # :authenticity_token
           )
     end
     
