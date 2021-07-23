@@ -28,7 +28,8 @@ class UsersController < ApplicationController
       # redirect_to after_signup_path
       #redirect_to new_detail_path
       # TODO: ここでユーザー認証を促す画面にリダイレクトさせるようにあとで設定する
-      redirect_to root_url
+      # redirect_to root_url
+      redirect_to root_path
     else
       render 'new'
     end
@@ -41,32 +42,15 @@ class UsersController < ApplicationController
   def detailcreate
     @user = User.find_by(id: params[:id])
     #binding.pry
-    if @user.update(user_params)
-      if @user.save
-        redirect_to @user
-      end
+    if @user.update(user_update_params)
+      redirect_to @user
     else
-      binding.pry
       flash[:danger] = "Invalid information is included."
       render 'detail'
     end
   end
   
-  
-  
-  # def details
-  # end
-  
-  # def details_create
-  #   @user = User.find_by(id: current_user.id)
-  #   # binding.pry
-  #   @detail = @user.build_detail(detail_params)
-  #   if @detail.save
-  #     redirect_to "/users/#{@detail.user_id}"
-  #   else
-  #     render 'details'
-  #   end
-  # end
+
   
   def edit
     @user = User.find(params[:id])
@@ -76,13 +60,11 @@ class UsersController < ApplicationController
   def update
     @user = User.find_by(id: params[:id])
     #binding.pry
-    if @user.update_attribute(user_params)
-      if @user.save
-        redirect_to @user
-      else
-        flash[:danger] = "Invalid information is included."
-        render 'edit'
-      end
+    if @user.update(user_update_params)
+      redirect_to @user
+    else
+      flash[:danger] = "Invalid information is included."
+      render 'edit'
     end
   end
     
@@ -148,13 +130,8 @@ class UsersController < ApplicationController
     end
     # .merge(user_id: User.find_by(id: params[:id]).id) #これはつけた方がいいですか？
     
-    def user_detail_params #strong parameterのネスト化実装
+    def user_update_params 
       params.permit(
-        # :name, 
-        # :email, 
-        # :image, 
-        # :password, 
-        # :password_confirmation,
         :mother_tongue,
         :japanese_level,
         :english_level,
@@ -164,8 +141,7 @@ class UsersController < ApplicationController
         :self_introduction,
         :skype,
         :discord,
-        :other#,
-        # :authenticity_token
+        :other
           )
     end
     
