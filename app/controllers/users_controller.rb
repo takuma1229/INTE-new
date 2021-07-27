@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  #before_action :logged_in_user, only: [:edit, :update, :destroy, :following, :followers]
+  before_action :logged_in_user, only: [:edit, :update, :destroy, :following, :followers]
   before_action :correct_user, only: [:edit, :update, :destroy]
   
   def show
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       binding.pry
-      flash[:danger] = "Invalid information is included."
+      flash.now[:danger] = "Invalid information is included."
       render 'detail'
     end
   end
@@ -55,16 +55,16 @@ class UsersController < ApplicationController
   
   def edit
     @user = User.find(params[:id])
-    @detail = Detail.find_by(user_id: @user.id )
   end
   
   def update
     @user = User.find_by(id: params[:id])
     #binding.pry
-    if @user.update(user_update_params)
+    if @user.update(user_params)
+      flash.now[:success] = "Profile updated"
       redirect_to @user
     else
-      flash[:danger] = "Invalid information is included."
+      flash.now[:danger] = "Invalid information is included."
       render 'edit'
     end
   end
@@ -151,6 +151,14 @@ class UsersController < ApplicationController
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_url) unless current_user?(@user)
+    end
+
+    # ログイン済みユーザーかどうか確認
+    def logged_in_user
+      unless logged_in?
+        flash[:danger] = "Please log in."
+        redirect_to sessions_url
+      end
     end
     
 end
