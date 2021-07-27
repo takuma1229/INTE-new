@@ -1,3 +1,4 @@
+
 <% provide(:title, @user.name) %>
 <div class="user-wrapper">
   <div class="icon">
@@ -10,26 +11,22 @@
   <div class="basic-info">
     <h1 class="user-name">
       <%= @user.name %>
-      <%# もともと if logged_in?でrender 'follow_form'%>
+      <%#= render 'follow_form' if logged_in? %>
     </h1>
-    <% if @user == current_user %>
-      <div class="setting">
-        <%= link_to "Settings", edit_user_path(current_user), class: "btn btn-primary" %>
-      </div>
-    <% end %>
     <section class="stats">
-    <%#= render 'shared/stats' %>
+      <%#= render 'shared/stats' %>
     </section>
   </div>
   <div class="user-microposts">
     <div class="microposts-square">
-    <%# if @user.microposts.any? %>
-      <h3>Microposts (<%#= @user.microposts.count %>)</h3>
+    <% if @user.microposts.any? %>
+      <h3>Microposts (<%= @user.microposts.count %>)</h3>
       <ol class="microposts">
         <%#= render @microposts %>
+        <%= render 'microposts/microposts' %>
       </ol>
-      <%#= will_paginate @microposts %>
-    <%# end %>
+      <%= will_paginate @microposts %>
+    <% end %>
     </div>
   </div>
 </div>
