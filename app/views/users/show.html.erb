@@ -12,6 +12,11 @@
       <%= @user.name %>
       <%# もともと if logged_in?でrender 'follow_form'%>
     </h1>
+    <% if @user == current_user %>
+      <div class="setting">
+        <%= link_to "Settings", edit_user_path(current_user), class: "btn btn-primary" %>
+      </div>
+    <% end %>
     <section class="stats">
     <%#= render 'shared/stats' %>
     </section>
