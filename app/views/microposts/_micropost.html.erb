@@ -19,7 +19,7 @@
       </span>
       <span>
         <% if current_user?(micropost.user) %>
-          <%#= link_to "delete", micropost, method: :delete,
+          <%= link_to "delete", micropost, method: :delete,
                                           data: {confirm: "You sure?"}, class: "delete-button" %>
         <% end%>
       </span>
