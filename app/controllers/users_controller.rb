@@ -45,6 +45,7 @@ class UsersController < ApplicationController
     if @user.update(user_update_params)
       redirect_to @user
     else
+      binding.pry
       flash[:danger] = "Invalid information is included."
       render 'detail'
     end
