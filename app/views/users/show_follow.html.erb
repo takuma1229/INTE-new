@@ -1,0 +1,45 @@
+<% provide(:title, @title) %>
+<div class="following-follower-page">
+  <%# <aside class="col-md-4"> %>
+    <section class="user_info">
+      <div class="left-part">
+        <% if @user.image? %>
+        <%= image_tag @user.image.url, class: "user-image" %>
+      <% else %>
+        <%=  image_tag "default_user.jpeg", class: "user-image" %>  
+      <% end %>
+      </div>
+      <div class="right-part">
+        <span><%= link_to "#{@user.name}", @user %></span>
+        <%= render 'shared/stats' %>
+      </div>
+    </section>
+    <section class="followings-followers">
+    <h2>Followings(<%= @user.following.count %>)</h2>
+      <% if @users.any? %>
+        <div class="user_avatars">
+          <% @users.each do |user| %>
+            <div class="user-infos">
+              <% if user.image? %>
+                <%= image_tag user.image.url, class: "user-image" %>
+              <% else %>
+                <%=  image_tag "default_user.jpeg", class: "user-image" %>  
+              <% end %>
+              <%= link_to  "#{user.name}", "/users/#{user.id}" %>
+            </div>
+            
+          <% end %>
+        </div>
+      <% end %>
+    </section>
+  <%# </aside> %>
+  <%# <div class="col-md-8"> %>
+    <% if @users.any? %>
+      <ul class="users follow">
+      </ul>
+      <div class="text-center">
+        <%= will_paginate %>
+      </div>
+    <% end %>
+  <%# </div> %>
+</div>
