@@ -21,6 +21,23 @@
     <%= render 'shared/stats' %>
     </section>
   </div>
+  
+  <div class="direct-message">
+    <% if @user.id == current_user.id %>
+
+    <% else %>
+      <% if @isRoom == true %>
+        <p><a href="/rooms/<%= @roomId %>">チャットへ</a>
+      <% else %>
+        <%= form_for @room do |f| %>
+          <%= fields_for @entry do |e| %>
+            <%= e.hidden_field :user_id, :value=> @user.id %>
+          <% end %>
+          <%= f.submit "チャットを始める" %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
 
   <div class="user-microposts">
     <div class="micropost-square">

@@ -17,4 +17,6 @@ Rails.application.routes.draw do
   resources :microposts,          only: [:create, :destroy]
   resources :homes,               only: [:index]
   resources :relationships,       only: [:create, :destroy]
+  resources :messages, :only => [:create]
+  resources :rooms, :only => [:create, :show, :index]
 end
