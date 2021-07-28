@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     member do
       get 'detail'
       patch 'detailcreate'
+      get :following, :followers
     end
   end
   resources :sessions, only: [:index, :create, :destroy]
@@ -15,4 +16,5 @@ Rails.application.routes.draw do
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :microposts,          only: [:create, :destroy]
   resources :homes,               only: [:index]
+  resources :relationships,       only: [:create, :destroy]
 end
