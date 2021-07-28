@@ -339,6 +339,7 @@ header{
 .user-wrapper{
   padding-top: 65px;
   padding-left: 20px;
+  padding-right: 20px;
   .user-image{
     object-fit: cover;
     height: 80px;
@@ -352,8 +353,27 @@ header{
     border-radius: 200px;
   }
   .basic-info{
+    margin: 0 auto;
     .user-name{
       font-size: 25px;
+    }
+    .direct-message{
+      float: left;
+      margin-left: 30px;
+      button{
+        background: none;
+        font-size: 40px;
+        margin-right: 20px;
+        border-style: none;
+        text-decoration: none;
+        &:hover{
+          opacity: 0.5;
+        }
+      }
+
+    }
+    .stats{
+      margin-top: 31px;
     }
   }
   .user-microposts{
@@ -469,6 +489,62 @@ header{
     .pagination{
       text-align: center;
     }
+}
+
+.dm-wrapper{
+  margin-top: 60px;
+  .title{
+    text-align: center;
+  }
+  .members{
+    text-align: center;
+    h5{
+      strong{
+        a{
+          text-decoration: none;
+          color: white;
+          &:hover{
+            border-bottom: 1px solid ;
+          }
+        }
+      }
+    }
+  }
+  .new-message-form{
+    color: black;
+    .send-button{
+      width: 50%;
+      margin: 0 auto;
+      margin-bottom: 20px;
+      .send-message{
+        border-radius: 1000px;
+        &:hover{
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+  .messages{
+    .message{
+      min-height: 70px;
+      border: 1px solid;
+      padding-top: 10px;
+      .icon{
+        img{
+          width: 50px;
+          height: 50px;
+          object-fit: cover;
+          border-radius: 1000px;
+          margin-left: 20px;
+          margin-right: 10px;
+          float: left;
+        }
+      }
+      strong{
+        display: block;
+      }
+    }
+  }
 }
 
 .edit-wrapper{

@@ -1,26 +1,44 @@
-<h1>DM</h1>
+<div class="dm-wrapper">
+  <h1 class="title">DM</h1>
 
-<h4>参加者</h4>
-<% @entries.each do |e| %>
-  <h5><strong><a href="/users/<%= e.user.id %>"><%= e.user.email%>さん</a></strong></h5>
-<% end %>
+  <div class="members">
+    <% @entries.each do |e| %>
+      <h5><strong><a href="/users/<%= e.user.id %>"><%= e.user.name%></a></strong></h5>
+    <% end %>
+  </div>
 
-<hr>
-<% if @messages.present? %>
-  <% @messages.each do |m| %>
-    <strong><%= m.content %></strong>
-    <small>by <strong><a href="/users/<%= m.user_id %>"><%= m.user.email %>さん</a></strong></small>
-    <hr>
-  <% end %>
-<% else %>
-  <h3 class="text-center">メッセージはまだありません</h3>
-<% end %>
+  <div class="new-message-form">
+    <%= form_for @message do |f| %>
+      <%= f.text_field :content, :placeholder => "Enter message." , :size => 70 %>
+      <%= f.hidden_field :room_id, :value => @room.id %>
+      <br>
+      <div class="send-button">
+        <%= f.submit "Send", class:"btn btn-primary send-message" %>
+      </div>  
+    <% end %>
+  </div>
 
-<%= form_for @message do |f| %>
-  <%= f.text_field :content, :placeholder => "メッセージを入力して下さい" , :size => 70 %>
-  <%= f.hidden_field :room_id, :value => @room.id %>
-  <br>
-  <%= f.submit "投稿する" %>
-<% end %>
+  <div class="messages">
+    <% if @messages.present? %>
+      <% @messages.each do |m| %>
+        <div class="message">
+          <div class="icon">
+            <% if m.user.image? %>
+              <%= image_tag m.user.image.url, class: "user-image" %>
+            <% else %>
+              <%=  image_tag "default_user.jpeg", class: "user-image" %>  
+            <% end %>
+          </div>
+          <small><strong><a href="/users/<%= m.user_id %>"><%= m.user.name %></a></strong></small>
+          <strong><%= m.content %></strong>
+        </div>  
+      <% end %>
+    <% else %>
+      <h3 class="text-center">There is no message yet.</h3>
+    <% end %>
+  </div>
 
-<%= link_to "ユーザー一覧に戻る", users_path %>
+  
+
+  <%= link_to "ユーザー一覧に戻る", users_path %>
+</div>
