@@ -10,7 +10,7 @@
   <div class="basic-info">
     <h1 class="user-name">
       <%= @user.name %>
-      <%# もともと if logged_in?でrender 'follow_form'%>
+      <%= render 'follow_form' if logged_in? %>
     </h1>
     <% if @user == current_user %>
       <div class="setting">
@@ -18,7 +18,7 @@
       </div>
     <% end %>
     <section class="stats">
-    <%#= render 'shared/stats' %>
+    <%= render 'shared/stats' %>
     </section>
   </div>
 
@@ -33,5 +33,4 @@
       <% end %>
     </div>
   </div>
-
 </div>
