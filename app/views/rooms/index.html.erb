@@ -1,0 +1,20 @@
+<div class="dm-index-wrapper">
+  <h1 class="users-heading">DM list</h1>
+  <% @anotherEntries.each do |e| %>
+  <div class="users-index-item">
+  <!-- 左側に最新メッセージを送ったユーザーのプロフィール画像 -->
+    <div class="user-left">
+    <%= link_to room_path(e.room.id) do %>
+    <%# ここで相手の画像を引っ張ってきたい %>
+    <% end %>
+    </div>
+  <!-- 右側に最新メッセージを送ったユーザーの名前及び、そのメッセージ -->
+    <div class="user-right">
+    <%= link_to room_path(e.room.id) do %>
+      <p class="companion-name"><%= e.user.name %></p>
+    <% end %>
+      <%= e.room.messages.order(created_at: :desc).take.try(:content) %><br>
+    </div>
+  </div>
+  <% end %>
+</div>

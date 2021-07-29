@@ -547,6 +547,25 @@ header{
   }
 }
 
+.dm-index-wrapper{
+  padding: 0px 10px;
+  margin-top: 60px;
+  .users-heading{
+    text-align: center;
+  }
+  .users-index-item{
+    border: 0.5px solid;
+    .user-right{
+      padding: 10px 10px;
+      .companion-name{
+        font-size: 25px;
+        margin-bottom: 0px;
+        color: white;
+      }
+    }
+  }
+}
+
 .edit-wrapper{
   margin-top: 70px;
   h1{
