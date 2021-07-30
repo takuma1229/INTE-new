@@ -26,6 +26,9 @@ class PasswordResetsController < ApplicationController
     if params[:user][:password].empty?                 
       @user.errors.add(:password, :blank)
       render 'edit'
+    elsif params[:user][:password].count < 6
+      flash[:danger] = "Password is too short. Minimum 6 characters."
+      render 'edit'
     elsif @user.update(user_params)               
       log_in @user
       flash[:success] = "Password has been reset."
