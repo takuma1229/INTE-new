@@ -17,6 +17,10 @@
         <%= link_to "Settings", edit_user_path(current_user), class: "btn btn-primary" %>
       </div>
     <% end %>
+    <section class="stats">
+    <%= render 'shared/stats' %>
+    </section>
+    
     <div class="direct-message">
       <% if @user.id == current_user.id %>
 
@@ -35,9 +39,23 @@
         <% end %>
       <% end %>
     </div>
-    <section class="stats">
-    <%= render 'shared/stats' %>
-    </section>
+
+    <div class="user-details">
+      <h3 class="content">Mother Tongue : <%= @user.mother_tongue %></h3>
+      <h3 class="content">Japanese Level: <%= @user.japanese_level %></h3>
+      <h3 class="content">English Level : <%= @user.english_level %></h3>
+      <h3 class="content">Gender : <%= @user.gender %></h3>
+      <h3 class="content">Region : <%= @user.region %></h3>
+      <h3 class="content">Purpose of Learning : <%= @user.purpose %></h3>
+      <h3 class="content">Skype URL : <a><%= @user.skype %></a></h3>
+      <h3 class="content">Discord URL : <a><%= @user.discord %></a></h3>
+      <h3 class="content">Other Service URL : <a><%= @user.other %></a></h3>
+      <div class="self-introduction">
+        <h3>Self Introduction</h3>
+        <p><%= @user.self_introduction %></p>
+      </div>
+    </div>
+    
   </div>
   
   

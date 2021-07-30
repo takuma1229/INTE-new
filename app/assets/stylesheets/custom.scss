@@ -345,6 +345,7 @@ header{
   padding-top: 65px;
   padding-left: 20px;
   padding-right: 20px;
+  width: 100%;
   .user-image{
     object-fit: cover;
     height: 80px;
@@ -361,6 +362,9 @@ header{
     margin: 0 auto;
     .user-name{
       font-size: 25px;
+    }
+    .setting{
+      display: inline;
     }
     .direct-message{
       float: left;
@@ -379,6 +383,18 @@ header{
     }
     .stats{
       margin-top: 31px;
+    }
+    .user-details{
+      width: 100%;
+      box-sizing: border-box;
+      .content{
+        overflow-y: scroll;
+        font-size: 18px;
+      }
+      .self-introduciton{
+        width: 100% ;
+        overflow-wrap: normal;
+      }
     }
   }
   .user-microposts{
@@ -584,6 +600,7 @@ header{
   }
   select{
     display: block;
+    color: black;
   }
   label{
     display: block;
