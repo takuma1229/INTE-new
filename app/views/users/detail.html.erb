@@ -17,38 +17,38 @@
         
         <%= f.label :japanese_level, "Japanese Level" %>
         <%= f.select :japanese_level, [["Beginner", "Beginner"], ["Capable of quite basic communication", "Capable of quite basic communication"], 
-        ["Capable of daily conversation | 日常会話ができる","Capable of daily conversation | 日常会話ができる"], ["Capable of advanced conversation | 難しい内容の会話ができる","Capable of advanced conversation | 難しい内容の会話ができる"], ["Almost native level | ネイティブとほとんど同レベル","Almost native level | ネイティブとほとんど同レベル"],
+        ["Capable of daily conversation","Capable of daily conversation"], ["Capable of advanced conversation","Capable of advanced conversation"], ["Almost native level","Almost native level"],
         ["Native | ネイティブ","Native | ネイティブ"]], include_blank: "Please select.", class:"form-control" %>
         
-        <%= f.label :english_level, "English Level | 英語のレベル" %>
-        <%= f.select :english_level, [["Beginner | 初心者", "Beginner | 初心者"], ["Capable of quite basic communication | 簡単な会話ならできる", "Capable of quite basic communication | 簡単な会話ならできる"], 
-        ["Capable of daily conversation | 日常会話ができる","Capable of daily conversation | 日常会話ができる"], ["Capable of advanced conversation | 難しい内容の会話ができる","Capable of advanced conversation | 難しい内容の会話ができる"], ["Almost native level | ネイティブとほとんど同レベル","Almost native level | ネイティブとほとんど同レベル"],
-        ["Native | ネイティブ","Native | ネイティブ"]], include_blank: "Please select.", class:"form-control" %>
+        <%= f.label :english_level, "English Level" %>
+        <%= f.select :english_level, [["Beginner", "Beginner"], ["Capable of quite basic communication", "Capable of quite basic communication"], 
+        ["Capable of daily conversation","Capable of daily conversation"], ["Capable of advanced conversation","Capable of advanced conversation"], ["Almost native level","Almost native level"],
+        ["Native","Native"]], include_blank: "Please select.", class:"form-control" %>
         
-        <%= f.label :gender, "Gender(optional) | ジェンダー（任意）" %>
-        <%= f.select :gender, [["he/him | 男性", "he/him | 男性"], ["she/her | 女性", "she/her | 女性"], 
-        ["they/them | その他","they/them | その他"], ["I don't want to tell | 言いたくない","I don't want to tell | 言いたくない"]], include_blank: "Please select.", class:"form-control" %>
+        <%= f.label :gender, "Gender(optional)" %>
+        <%= f.select :gender, [["he/him", "he/him"], ["she/her", "she/her"], 
+        ["they/them","they/them"], ["I don't want to tell","I don't want to tell"]], include_blank: "Please select.", class:"form-control" %>
         
-        <%= f.label :region, "Region  | 地域" %>
-        <%= f.select :region, [["Asia | アジア", "Asia | アジア"], ["Europe ｜ヨーロッパ", "Europe | ヨーロッパ"], 
-        ["Africa | アフリカ","Africa | アフリカ"], ["North/Central America | 北/中央アメリカ","North/Central America | 北/中央アメリカ"], ["South America | 南アメリカ","South America | 南アメリカ"],
-        ["Oceania | オセアニア","Oceania | オセアニア"], ["Other | その他","Other | その他"]], include_blank: "Please select.", class:"form-control" %>
+        <%= f.label :region, "Region" %>
+        <%= f.select :region, [["Asia", "Asia"], ["Europe", "Europe"], 
+        ["Africa","Africa"], ["North/Central America","North/Central America"], ["South America","South America"],
+        ["Oceania","Oceania"], ["Other","Other"]], include_blank: "Please select.", class:"form-control" %>
 
-        <%= f.label :purpose, "Purpose of Learning | 学習目的" %>
-        <%= f.select :purpose, [["Business | 仕事", "Business | 仕事"], ["School Classes | 学校の授業", "School Classes | 学校の授業"], 
-        ["Entrance Exam | 受験","Entrance Exam | 受験"], ["Trip | 旅行","Trip | 旅行"], ["Want to talk with Foreingers | 外国の人と話したい","Want to talk with Foreingers | 外国の人と話したい"], 
-        ["Qualifying Exam | 資格試験","Qualifying Exam | 資格試験"], ["Hobby | 趣味","Hobby | 趣味"], ["Other | その他", "Other | その他"]], include_blank: "Please select.", class:"form-control" %>
+        <%= f.label :purpose, "Purpose of Learning" %>
+        <%= f.select :purpose, [["Business", "Business"], ["School Classes", "School Classes"], 
+        ["Entrance Exam","Entrance Exam"], ["Trip","Trip"], ["Want to talk with Foreingers","Want to talk with Foreingers"], 
+        ["Qualifying Exam","Qualifying Exam"], ["Hobby","Hobby"], ["Other", "Other"]], include_blank: "Please select.", class:"form-control" %>
         
-        <%= f.label :self_introduction, "Self Introduction | 自己紹介" %>
+        <%= f.label :self_introduction, "Self Introduction" %>
         <%= f.text_area :self_introduction, class: 'form-control self-intro', placeholder: "It is recommended that you write in simple English. 英語で書くことをお勧めします。簡単な文でも問題ありません。" %>
         
-        <%= f.label :skype, "URL of Your SNS 1 (optional) | SNSリンク1（任意）" %>
+        <%= f.label :skype, "Skype URL" %>
         <%= f.text_field :skype, class: 'form-control' %>
         
-        <%= f.label :discord, "URL of Your SNS 2 (optional) | SNSリンク2（任意）" %>
+        <%= f.label :discord, "Discord URL" %>
         <%= f.text_field :discord, class: 'form-control' %>
         
-        <%= f.label :other, "URL of Your SNS 3 (optional) | SNSリンク3（任意）" %>
+        <%= f.label :other, "Other Service URL" %>
         <%= f.text_field :other, class: 'form-control' %>
 
         <%= f.text_field :name, type: "hidden", value: "#{@user.name}" %>
