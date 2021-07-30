@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     end
   end
   resources :sessions, only: [:index, :create, :destroy]
-  resources :account_activations, only: [:edit]
+  resources :account_activations, only: [:index, :edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :microposts,          only: [:create, :destroy]
   resources :homes,               only: [:index]

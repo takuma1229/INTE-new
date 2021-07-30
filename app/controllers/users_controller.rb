@@ -47,7 +47,7 @@ class UsersController < ApplicationController
       #redirect_to new_detail_path
       # TODO: ここでユーザー認証を促す画面にリダイレクトさせるようにあとで設定する
       # redirect_to root_url
-      redirect_to root_path
+      redirect_to account_activations_path
     else
       render 'new'
     end
