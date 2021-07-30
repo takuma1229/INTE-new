@@ -25,7 +25,6 @@
           <button><p><a href="/rooms/<%= @roomId %>"><i class="far fa-envelope"></i></a></button>
         <% else %>
           <%= form_for @room do |f| %>
-            <%= f.hidden_field :room_id, value =>  %>
             <%= fields_for @entry do |e| %>
               <%= e.hidden_field :user_id, :value=> @user.id %>
             <% end %>
