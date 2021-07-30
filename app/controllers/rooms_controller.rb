@@ -9,7 +9,6 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
-    @companion = User.find(params[:id])
     if Entry.where(:user_id => current_user.id, :room_id => @room.id).present?
       @messages = @room.messages.order(created_at: :desc)
       @message = Message.new

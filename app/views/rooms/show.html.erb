@@ -2,7 +2,10 @@
   <h1 class="title">DM</h1>
 
   <div class="members">
-    <h3>To: <%= @companion.name %></h1>
+    <h4>Members</h4>
+    <% @entries.each do |e| %>
+      <h5><strong><a href="/users/<%= e.user.id %>"><%= e.user.name%></a></strong></h5>
+    <% end %>
   </div>
 
   <div class="new-message-form">
