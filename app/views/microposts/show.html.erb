@@ -1,15 +1,31 @@
-<h1>投稿詳細ページ</h1>
-<h3><%= @micropost.user.email %></h3>
-<h3><%= @micropost.content %></h3>
-<h3>いいね件数: <%= @micropost.likes.count %></h3>
-<% if current_user.already_liked?(@micropost) %>
-  <%= button_to 'いいねを取り消す', micropost_like_path(@micropost), method: :delete %>
-<% else %>
-  <%= button_to 'いいね', micropost_likes_path(@micropost) %>
-<% end %>
-<h2>いいねしたユーザー</h2>
-<% @micropost.liked_users.each do |user| %>
-  <li><%= user.email %></li>
-<% end %>
-
-<%= link_to "ホームへ戻る", homes_path %>
+<div class="micropost-detail-wrapper">
+  <div class="content">
+    <% if @micropost.user.image? %>
+      <%= image_tag @micropost.user.image.url, class: "user-image" %>
+    <% else %>
+      <%=  image_tag "default_user.jpeg", class: "user-image" %>  
+    <% end %>
+    <h2><%= link_to "#{@micropost.user.name}", @micropost.user %></h2>
+    <h3><%= @micropost.content %></h3>
+    <h3>Likes: <%= @micropost.likes.count %></h3>
+    <% if current_user.already_liked?(@micropost) %>
+      <%= button_to 'Unlike', micropost_like_path(@micropost), method: :delete, class: "btn btn-dark unlike" %>
+    <% else %>
+      <%= button_to 'Like!', micropost_likes_path(@micropost), class: "btn btn-primary like" %>
+    <% end %>
+  </div>
+  <h5>Liked by :</h5>
+  <% @micropost.liked_users.each do |user| %>
+    <li>
+    <% if user.image? %>
+      <%= image_tag user.image.url, class: "user-image" %>
+    <% else %>
+      <%=  image_tag "default_user.jpeg", class: "user-image" %>  
+    <% end %>
+    <%= link_to "#{@micropost.user.name}", @micropost.user %>
+    </li>
+  <% end %>
+  <div class="to-home-button">
+    <i class="fas fa-home"></i><%= link_to "Home", homes_path, class: "to-home" %>
+  </div>
+</div>
