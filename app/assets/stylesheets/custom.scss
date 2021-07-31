@@ -38,8 +38,8 @@ header{
   .main-logo{
     height: 120px;
     float: left;
-    margin-left: -13px;
-    margin-top: -23px;
+    // margin-left: -13px;  TODO: あとでコメントアウト消す
+    // margin-top: -23px;
     }
   .dropdown{
     float: right;
@@ -897,7 +897,7 @@ input {
     height: 80px;
     .main-logo{
       height: 100px;
-      margin-top: -10px;
+      // margin-top: -10px; TODO: あとでコメントアウト消す
       margin-left: 20px;
     }
     .dropdown{
