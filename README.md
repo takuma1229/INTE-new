@@ -1,1 +1,1 @@
-This is INTE!
+This is INTE! アイウエオアイウエオ

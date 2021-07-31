@@ -71,48 +71,4 @@
       <% end %>
     </div>
   </div>
-
-  <% if @likes.present? %>
-    <ul class="relative-post-lists">
-    <% @likes.each do |like| %>
-      <li class='post-list'>
-        <%= link_to post_path(like.id) do %>
-        <div class='post-img-content'>
-          <%= image_tag like.image, class: "post-img" %>
-        </div>
-          <div class='relative-post-name'>
-            商品名：<%= like.name %>
-          </div>
-          <div class='relative-item-price'>
-            <span><%= like.price %>円(税込み)</span>
-          </div>
-          <div class="relative-post-evaluation">
-            <span>評価：</span>
-              <span id="star-rate-<%= like.id %>"></span>
-              <script>
-                $('#star-rate-<%= like.id %>').raty({
-                  size: 36,
-                  starOff: "<%= asset_path('star-off.png') %>",
-                  starOn: "<%= asset_path('star-on.png') %>",
-                  starHalf: "<%= asset_path('star-half.png') %>",
-                  half: true,
-                  readOnly: true,
-                  score: <%= like.evaluation %>,
-                });
-              </script>
-              <%= like.evaluation %>
-          </div>
-          <div class='user-img-content'>
-            <%= image_tag like.user.image ,class:"mini-img" if like.user.image.attached? %>
-            <%= link_to like.user.nickname, user_path(like.user.id) %>
-          </div>
-          <div class="relative-post-date">
-            更新日時：<%= like.created_at.strftime("%Y.%m.%d") %>
-          </div>
-        <% end %>
-      </li>
-    <% end %>
-    </ul>
-  <% end %>
-  
 </div>
