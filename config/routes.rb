@@ -11,12 +11,10 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
-  resources :sessions, only: [:index, :create, :destroy] 
+  resources :sessions, only: [:index, :create, :destroy]
   resources :account_activations, only: [:index, :edit]
-  resources :password_resets,     only: [:new, :create, :edit, :update] 
-  resources :microposts,          only: [:create, :destroy] do
-    resources :likes, only: [:create, :destroy]
-  end
+  resources :password_resets,     only: [:new, :create, :edit, :update]
+  resources :microposts,          only: [:create, :destroy]
   resources :homes,               only: [:index]
   resources :relationships,       only: [:create, :destroy]
   resources :messages, :only => [:create]
