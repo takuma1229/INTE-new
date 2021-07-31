@@ -1,6 +1,8 @@
 class User < ApplicationRecord
 
   has_many :microposts, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liked_posts, through: :likes, source: :post
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
                                   dependent:   :destroy
@@ -100,6 +102,11 @@ class User < ApplicationRecord
   # 現在のユーザーがフォローしてたらtrueを返す
   def following?(other_user)
     following.include?(other_user)
+  end
+
+  #あるユーザーがすでにその投稿にいいねをしていたらtrueを返す
+  def already_liked?(post)
+    self.likes.exists?(post_id: post.id)
   end
 
   private
