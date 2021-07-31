@@ -7,6 +7,8 @@ class UsersController < ApplicationController
     @microposts = @user.microposts.paginate(page: params[:page])
     @currentUserEntry=Entry.where(user_id: current_user.id)
     @userEntry=Entry.where(user_id: @user.id)
+    likes = Like.where(user_id: current_user.id).order(created_at: :desc).pluck(:post_id)
+    @likes = Micropost.find(likes)
     if @user.id == current_user.id
     else
       @currentUserEntry.each do |cu|
