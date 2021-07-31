@@ -13,10 +13,10 @@ Rails.application.routes.draw do
   end
   resources :sessions, only: [:index, :create, :destroy]
   resources :account_activations, only: [:index, :edit]
-
   resources :password_resets,     only: [:new, :create, :edit, :update] 
-  resources :microposts,          only: [:create, :destroy] 
-
+  resources :microposts,          only: [:create, :destroy, :show] do
+    resources :likes, only: [:create, :destroy]
+  end 
   resources :homes,               only: [:index]
   resources :relationships,       only: [:create, :destroy]
   resources :messages, :only => [:create]

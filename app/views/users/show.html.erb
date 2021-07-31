@@ -71,4 +71,10 @@
       <% end %>
     </div>
   </div>
+  <h3>いいねしている投稿</h3>
+  <% @user.liked_posts.each do |post| %>
+    <%= post.user.email %>
+    <%= post.content %>
+  <% end %>
+
 </div>
