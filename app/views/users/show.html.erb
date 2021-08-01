@@ -22,18 +22,20 @@
     </section>
     
     <div class="direct-message">
-      <% if @user.id == current_user.id %>
+      <% if current_user %>
+        <% if @user.id == current_user.id %>
 
-      <% else %>
-        <% if @isRoom == true %>
-          <button><p><a href="/rooms/<%= @roomId %>"><i class="far fa-envelope"></i></a></button>
         <% else %>
-          <%= form_for @room do |f| %>
-            <%= fields_for @entry do |e| %>
-              <%= e.hidden_field :user_id, :value=> @user.id %>
-            <% end %>
-            <%= f.button :type => "submit", style: 'border-style: none;' do %>
-              <i class="far fa-envelope"></i>
+          <% if @isRoom == true %>
+            <button><p><a href="/rooms/<%= @roomId %>"><i class="far fa-envelope"></i></a></button>
+          <% else %>
+            <%= form_for @room do |f| %>
+              <%= fields_for @entry do |e| %>
+                <%= e.hidden_field :user_id, :value=> @user.id %>
+              <% end %>
+              <%= f.button :type => "submit", style: 'border-style: none;' do %>
+                <i class="far fa-envelope"></i>
+              <% end %>
             <% end %>
           <% end %>
         <% end %>
