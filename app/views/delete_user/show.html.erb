@@ -1,0 +1,11 @@
+<% provide(:title, 'delete') %>
+
+<div class="delete-wrapper">
+  <h1>Are you sure to delete this user?</h1>
+  <p>If you delete, all the datas about this user will be lost 
+      and <span>NEVER</span> be restored.</p>
+  <div class="buttons">
+    <%= link_to "No", user_path, class: "btn no"  %>
+    <%= link_to "Delete", "/delete_user/#{@user.id}", method: :delete, data: { confirm: "You Sure?"}, class:"btn delete" %>
+  </div>
+</div>
