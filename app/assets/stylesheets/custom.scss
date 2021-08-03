@@ -328,8 +328,16 @@ header{
     .microposts{
       .micropost-wrapper{
         .right-part{
+          .content{
+            img{
+              display: block;
+              border-radius: 0px;
+            }
+          }
+        }
+        .left-part{
           img{
-            display: block;
+            border-radius: 1000px;
           }
         }
       }
@@ -417,21 +425,28 @@ header{
   width: 100%;
   .user-image{
     object-fit: cover;
-    height: 80px;
-    width: 80px;
+    height: 50px;
+    width: 50px;
     overflow: hidden;
     margin-top: 20px;
     float: left; 
     margin-right: 10px;
+    border-radius: 1000px;
   }
-  img{
-    border-radius: 200px;
+  .user-image{
+    // border-radius: 1000px;
   }
   .basic-info{
     margin: 0 auto;
     width: 100%;
     .user-name{
       font-size: 25px;
+      .stats{
+        font-size: 15px;
+        .stats-wrapper{
+          margin-top: 10px;
+        }
+      }
     }
     .setting{
       display: inline;
@@ -445,6 +460,12 @@ header{
         margin-right: 20px;
         border-style: none;
         text-decoration: none;
+        color: white;
+        .fa-envelope{
+          color: white;
+          margin-top: 20px;
+          margin-left: 25px;
+        }
         &:hover{
           opacity: 0.5;
         }
@@ -453,12 +474,14 @@ header{
     }
     .stats{
       margin-top: 31px;
+      margin: 0 auto;
+      display: inline;
     }
     .user-details{
       width: 100%;
       box-sizing: border-box;
+      margin-top: 20px;
       .content{
-        overflow-y: scroll;
         font-size: 18px;
       }
       .self-introduciton{
@@ -470,7 +493,7 @@ header{
     li{
       list-style: none;
     }
-    width: 50%;
+    width: 90%;
     margin: 0 auto;
     .microposts-square{
       .microposts{
@@ -479,6 +502,13 @@ header{
             .delete-button{
               text-decoration: underline;
               color: blue;
+            }
+          }
+          .left-part{
+            .micropost-user-image{
+              img{
+                border-radius: 1000px;
+              }
             }
           }
         }
@@ -951,10 +981,11 @@ input {
     margin-right: 15px;
     .micropost-user-image{
       img{
-        height: 30px;
-        width: 30px;
+        height: 50px;
+        width: 50px;
         object-fit: cover;
         overflow: hidden;
+        border-radius: 1000px;
       }
     }
   }
@@ -965,6 +996,12 @@ input {
     .user{
       font-size: 20px;
       display: block;
+    }
+    .content{
+      img{
+        max-width: 190px;
+        margin-top: 10px;
+      }
     }
     .timestamp{
       display: block;
@@ -995,7 +1032,7 @@ input {
       display: inline;
       border-radius: 1000px;
       width: 50%;
-      margin-top: 20px;
+      margin-top: 23px;
       &:hover{
         opacity: 0.9;
       }
