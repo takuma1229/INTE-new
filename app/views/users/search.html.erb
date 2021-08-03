@@ -4,28 +4,50 @@
     <%= f.label :name, "Name" %>
     <%= f.text_field :name %>
 
-    <%= f.label :gender, "Gender" %>
-    <%= f.select :gender, [["he/him", "he/him"], ["she/her", "she/her"], 
-    ["they/them","they/them"], ["I don't want to tell","I don't want to tell"]], include_blank: "Please select.", class:"form-control" %>
-
     <%= f.label :mother_tongue, "Mother Tongue" %>
     <%= f.select :mother_tongue, [["English", "English"], ["Japanese", "Japanese"], 
     ["Other","other"]], include_blank: "Please select.", class:"form-control" %>
 
-    <%= f.submit :search %>
+    <%= f.label :japanese_level, "Japanese Level" %>
+    <%= f.select :japanese_level, [["Beginner", "Beginner"], ["Capable of quite basic communication", "Capable of quite basic communication"], 
+    ["Capable of daily conversation","Capable of daily conversation"], ["Capable of advanced conversation","Capable of advanced conversation"], ["Almost native level","Almost native level"],
+    ["Native","Native"]], include_blank: "Please select.", class:"form-control" %>
+
+    <%= f.label :english_level, "English Level" %>
+    <%= f.select :english_level, [["Beginner", "Beginner"], ["Capable of quite basic communication", "Capable of quite basic communication"], 
+    ["Capable of daily conversation","Capable of daily conversation"], ["Capable of advanced conversation","Capable of advanced conversation"], ["Almost native level","Almost native level"],
+    ["Native","Native"]], include_blank: "Please select.", class:"form-control" %>
+
+    <%= f.submit :search, class:"btn btn-primary submit" %>
   <% end %>
-  <table>
+
+  <table class="results">
     <thead>
       <tr>
-        <th>Name</th>
+        <th>Results</th>
       </tr>
     </thead>
     <tbody>
       <% @users.each do |user| %>
         <tr>
-          <td><%= user.name %></td>
+          <td>
+            <div class="user-left">
+              <% if user.image? %>
+                <%= image_tag user.image.url, class: "user-image" %>
+              <% else %>
+                <%=  image_tag "default_user.jpeg", class: "user-image" %>  
+              <% end %>
+            </div> 
+            <div class="user-right">
+              <%= link_to "#{user.name}", user_path(user) %>
+              <p>Mother Tongue : <%= user.mother_tongue %></p>
+              <p>Japanese Level : <%= user.japanese_level %></p>
+              <p>English Level : <%= user.english_level %></p>
+            </div>
+          </td>
         </tr>
       <% end %>
     </tbody>
   </table>
+
 </div>
