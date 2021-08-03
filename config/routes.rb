@@ -22,4 +22,5 @@ Rails.application.routes.draw do
   resources :messages, :only => [:create]
   resources :rooms, :only => [:create, :show, :index]
   resources :delete_user, only: [:show, :destroy]
+  resources :user_search, only: [:index, :create]
 end
