@@ -1,0 +1,31 @@
+<div class="user-search-wrapper">
+  <h1>User search</h1>
+  <%= form_with url: search_users_path, method: :get, local: true do |f| %>
+    <%= f.label :name, "Name" %>
+    <%= f.text_field :name %>
+
+    <%= f.label :gender, "Gender" %>
+    <%= f.select :gender, [["he/him", "he/him"], ["she/her", "she/her"], 
+    ["they/them","they/them"], ["I don't want to tell","I don't want to tell"]], include_blank: "Please select.", class:"form-control" %>
+
+    <%= f.label :mother_tongue, "Mother Tongue" %>
+    <%= f.select :mother_tongue, [["English", "English"], ["Japanese", "Japanese"], 
+    ["Other","other"]], include_blank: "Please select.", class:"form-control" %>
+
+    <%= f.submit :search %>
+  <% end %>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

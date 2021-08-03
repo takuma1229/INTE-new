@@ -125,7 +125,16 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
   
+  def search
+    if params[:name].present? or params[:gender].present? or params[:mother_tongue].present?
+      @users = User.where('name LIKE ?', "%#{params[:name]}%")
+      @users = User.where('gender LIKE ?', "%#{params[:gender]}%")
+      @users = User.where('mother_tongue LIKE ?', "%#{params[:mother_tongue]}%")
 
+    else
+      @users = User.none
+    end
+  end
   
   
   
