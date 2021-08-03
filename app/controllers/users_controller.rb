@@ -47,10 +47,6 @@ class UsersController < ApplicationController
       @user.send_activation_email
       log_in @user
       flash[:info] = "Please check your email to activate your account."
-      # redirect_to after_signup_path
-      #redirect_to new_detail_path
-      # TODO: ここでユーザー認証を促す画面にリダイレクトさせるようにあとで設定する
-      # redirect_to root_url
       redirect_to account_activations_path
     else
       render 'new'
@@ -63,12 +59,10 @@ class UsersController < ApplicationController
 
   def detailcreate
     @user = User.find_by(id: params[:id])
-    #binding.pry
     if @user.update(user_update_params)
       redirect_to @user
     else
-      binding.pry
-      flash.now[:danger] = "Invalid information is included."
+      flash.now[:danger] = "Self introduction is too long(maximum 400 characters)."
       render 'detail'
     end
   end

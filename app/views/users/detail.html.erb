@@ -9,6 +9,7 @@
   <div class="row user-detail-forms">
     <div class="col-md-6 col-md-offset-3">
       <%= form_with(url: detailcreate_user_path, method: "patch", local: true) do |f| %>
+
         
       
         <%= f.label :mother_tongue, "Mother Tongue" %>
@@ -25,7 +26,7 @@
         ["Capable of daily conversation","Capable of daily conversation"], ["Capable of advanced conversation","Capable of advanced conversation"], ["Almost native level","Almost native level"],
         ["Native","Native"]], include_blank: "Please select.", class:"form-control" %>
         
-        <%= f.label :gender, "Gender(optional)" %>
+        <%= f.label :gender, "Gender" %>
         <%= f.select :gender, [["he/him", "he/him"], ["she/her", "she/her"], 
         ["they/them","they/them"], ["I don't want to tell","I don't want to tell"]], include_blank: "Please select.", class:"form-control" %>
         
@@ -39,7 +40,7 @@
         ["Entrance Exam","Entrance Exam"], ["Trip","Trip"], ["Want to talk with Foreingers","Want to talk with Foreingers"], 
         ["Qualifying Exam","Qualifying Exam"], ["Hobby","Hobby"], ["Other", "Other"]], include_blank: "Please select.", class:"form-control" %>
         
-        <%= f.label :self_introduction, "Self Introduction" %>
+        <%= f.label :self_introduction, "Self Introduction(MAXIMUM 400 characters)" %>
         <%= f.text_area :self_introduction, class: 'form-control self-intro', placeholder: "It is recommended that you write in simple English. 英語で書くことをお勧めします。簡単な文でも問題ありません。" %>
         
         <%= f.label :skype, "Skype URL" %>
