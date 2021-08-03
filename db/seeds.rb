@@ -18,7 +18,16 @@ User.create!(name:  name,
    password:              password,
    password_confirmation: password,
    activated: true,
-   activated_at: Time.zone.now)
+   activated_at: Time.zone.now,
+   mother_tongue: "Japanese",
+   japanese_level: "Capable of advanced conversation",
+   english_level: "Beginner",
+   gender: "I don't want to tell",
+   region: "Asia",
+   purpose: "Want to talk with Foreingers",
+   self_introduction: "Hi! This is Demo user of INTE. If there is any problem abount this app, feel free to contact inteofficial@gmail.com .",
+   skype: "https://www.youtube.com/user/SeikinTV",
+   discord: "https://twitter.com/dejiko_15th")
 end
 
 # ユーザーの一部を対象にマイクロポストを生成する
