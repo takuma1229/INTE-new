@@ -49,9 +49,15 @@
       <h3 class="content">Gender : <%= @user.gender %></h3>
       <h3 class="content">Region : <%= @user.region %></h3>
       <h3 class="content">Purpose of Learning : <%= @user.purpose %></h3>
-      <h3 class="content">Skype URL : <a><%= @user.skype %></a></h3>
-      <h3 class="content">Discord URL : <a><%= @user.discord %></a></h3>
-      <h3 class="content">Other Service URL : <a><%= @user.other %></a></h3>
+      <% unless @user.skype.empty? %>
+        <h3 class="content">Skype URL : <%= link_to "#{@user.name}'s skype", @user.skype %></h3>
+      <% end %>
+      <% unless @user.discord.empty? %>
+        <h3 class="content">Discord URL : <%= link_to "#{@user.name}'s discord", @user.discord %></h3>
+      <% end %>
+      <% unless @user.other.empty? %>
+        <h3 class="content">Other Service URL : <%= link_to "#{@user.name}'s other service link", @user.other %></h3>
+      <% end %>
       <div class="self-introduction">
         <h3>Self Introduction</h3>
         <p><%= @user.self_introduction %></p>
