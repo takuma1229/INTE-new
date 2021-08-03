@@ -655,6 +655,54 @@ header{
   }
 }
 
+.user-search-wrapper{
+  padding-top: 60px;
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  h1{
+    margin-bottom: 20px;
+  }
+  select, input{
+    color: black;
+  }
+  .submit{
+    width: 50%;
+    color: white;
+    border-radius: 10000px;
+    margin-top: 20px;
+  }
+  .results{
+    margin-top: 50px;
+    th{
+      font-size: 25px;
+      margin-bottom: 10px;
+    }
+    img{
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 1000px;
+    }
+    .user-left{
+      float: left;
+      margin: 10px 10px 0 0 ;
+    }
+    .user-right{
+      float: left;
+      text-align: left;
+      a{
+        color: white;
+        font-size: 25px;
+        margin-bottom: 5px;
+      }
+      p{
+        margin-bottom: 3px;
+      }
+    }
+  }
+}
+
 .edit-wrapper{
   margin-top: 70px;
   h1{
