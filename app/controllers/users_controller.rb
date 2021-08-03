@@ -124,15 +124,6 @@ class UsersController < ApplicationController
     @users = @user.followers.paginate(page: params[:page])
     render 'show_follow'
   end
-
-  def search
-    if params[:name].present?
-      @users = User.where('name LIKE ?', "%#{params[:name]}%")
-      @users = User.where('gender LIKE ?', "%#{params[:gender]}%")
-    else
-      @users = User.none
-    end
-  end
   
 
   

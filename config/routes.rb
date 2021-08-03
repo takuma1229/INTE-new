@@ -10,9 +10,6 @@ Rails.application.routes.draw do
       patch 'detailcreate'
       get :following, :followers
     end
-    collection do
-      get :search
-    end
   end
   resources :sessions, only: [:index, :create, :destroy]
   resources :account_activations, only: [:index, :edit]
