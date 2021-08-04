@@ -61,10 +61,8 @@
       <% end %>
       
       <div class="buttons">
-        <%#= link_to "Change Email", "/users/#{@user.id}/edit_email", class: "btn change-email" %>
-        <%#= link_to "Change Password", "/users/#{@user.id}/edit_email", class: "btn change-password" %>
+        <%= link_to "Delete Account", delete_user_path, class: "btn btn-danger delete-user" %>
       </div>
-      <%#= link_to "Delete User", "/users/#{@user.id}/delete", class: "btn delete-user" %>
     </div>
   </div>
 </div>

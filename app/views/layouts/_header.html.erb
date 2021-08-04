@@ -6,9 +6,9 @@
         <i class="fas fa-bars bars"></i>
       </a>
       <ul class="dropdown-menu dropdown-menu-right">
-        <li><i class="fas fa-home color"></i><%= link_to "Home", "#" %></li>
-        <li><i class="far fa-envelope color"></i><%= link_to "DM", "#" %></li>
-        <li><i class="fas fa-search color"></i><%= link_to "Search", "#" %></li>
+        <li><i class="fas fa-home color"></i><%= link_to "Home", homes_path %></li>
+        <li><i class="far fa-envelope color"></i><%= link_to "DM", rooms_path %></li>
+        <li><i class="fas fa-search color"></i><%= link_to "Search", search_users_path %></li>
         <%= link_to "Log out", session_path(id: current_user.id), method: :delete, class: "logout btn btn-primary"  %>
       </ul>
     </li>
