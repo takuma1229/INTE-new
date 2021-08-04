@@ -121,7 +121,7 @@ class UsersController < ApplicationController
   
   def search
     if params[:name].present? or params[:mother_tongue].present? or params[:japanese_level].present? or params[:english_level].present?
-      @users = User.where(name: params[:name]).or(User.where(gender: params[:mother_tongue])).or(User.where(japanese_level: params[:japanese_level])).or(User.where(english_level: params[:english_level]))
+      @users = User.where(name: params[:name]).or(User.where(mother_tongue: params[:mother_tongue])).or(User.where(japanese_level: params[:japanese_level])).or(User.where(english_level: params[:english_level]))
     else
       @users = User.none
     end 

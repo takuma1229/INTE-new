@@ -40,8 +40,8 @@ header{
   .main-logo{
     height: 120px;
     float: left;
-    // margin-left: -13px;  TODO: あとでコメントアウト消す
-    // margin-top: -23px;
+    margin-left: -13px;
+    margin-top: -23px;
     }
   .dropdown{
     float: right;
@@ -63,7 +63,8 @@ header{
         .color{
           color: black;
           display: inline;
-          margin-left: 33px;
+          margin-left: 27px;
+          margin-right: 3px;
         }
         a{
           display: inline;
@@ -312,7 +313,7 @@ header{
 }
 
 .user-home-wrapper{
-  padding-top: 60px;
+  padding-top: 70px;
   .micropost-form{
     width: 90%;
     margin: 0 auto;
@@ -775,11 +776,12 @@ header{
     width: 40%;
   }
   .delete-user{
-    margin-top: 40px;
+    margin-top: 60px;
     width: 40%;
     background-color: red;
     color: yellow;
     font-weight: 500;
+    border-radius: 0px;
   }
 }
 
