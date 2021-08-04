@@ -79,7 +79,7 @@ Rails.application.configure do
       authentication:       'login',
       enable_starttls_auto: true
     }
-
+  end
 
 
   # Ignore bad email addresses and do not raise email delivery errors.
