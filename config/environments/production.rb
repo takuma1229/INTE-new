@@ -68,7 +68,7 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
-  host = 'protected-island-35085.herokuapp.com'
+  host = '【Herokuのサブドメイン】.herokuapp.com'
   config.action_mailer.default_url_options = { host: host }
   ActionMailer::Base.smtp_settings = {
      :port => 587,
