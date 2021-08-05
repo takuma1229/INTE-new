@@ -141,7 +141,7 @@ header{
           
           p{
             font-size: 20px;
-            font-family: forma-djr-display, sans-serif;
+            font-family: "A-OTF Gothic BBB Pr6N", forma-djr-display, sans-serif;
             font-weight: 300;
             font-style: normal;
             
@@ -204,6 +204,8 @@ header{
           line-height: 19px;
           margin-bottom: 0;
           font-size: 15px;
+          font-weight: 400;
+          font-family: source-sans-pro, sans-serif;
         }
       }
       .buttons{
@@ -492,9 +494,12 @@ header{
       margin-top: 20px;
       .content{
         font-size: 18px;
+        font-family: franklin-gothic-urw;
+        font-weight: 300;
       }
-      .self-introduciton{
+      .self-introduction{
         width: 100% ;
+        text-align: center;
       }
     }
   }
@@ -1006,17 +1011,21 @@ input {
     .user{
       font-size: 20px;
       display: block;
+      font-family: "franklin-gothic-urw";
+      font-weight: 700;
     }
     .content{
       img{
         max-width: 190px;
         margin-top: 10px;
       }
+      font-family: source-sans-pro, sans-serif;
     }
     .timestamp{
       display: block;
       font-size: 12px;
       margin-top: 10px;
+      color: #90909E;
     }
     .delete-button{
       text-decoration: underline;
