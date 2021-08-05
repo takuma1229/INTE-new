@@ -89,6 +89,9 @@ header{
   .logout-pc{
     display: none;
   }
+  .menu-pc{
+    display: none;
+  }
   }
   
 .language-wrapper{
@@ -193,6 +196,7 @@ header{
         .video-call{
           width: 70%;
           margin: 0 auto;
+          max-width: 300px;
         }
       }
       .description{
@@ -1070,13 +1074,14 @@ input {
     height: 80px;
     .main-logo{
       height: 100px;
-      // margin-top: -10px; TODO: あとでコメントアウト消す
+      margin-top: -10px; 
       margin-left: 20px;
     }
     .dropdown{
       display: none;
     }
     .menu-pc{
+      display: block;
       .logout-pc{
         display: inline;
         float: right;
@@ -1084,6 +1089,29 @@ input {
         margin-right: 20px;
         margin-top: 17px;
         border-radius: 100px;
+      }
+      .color{
+        float: right;
+        font-size: 25px;
+        color: white;
+        margin-top: 24px;
+        margin-right: 21px;
+      }
+      a{
+        color: white;
+        font-family: a-otf-ud-shin-maru-go-pr6n;
+        font-weight: 700;
+        letter-spacing: 1px;
+        margin-left: 3px;
+      }
+      .user-image{
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        border-radius: 1000px;
+        float: right;
+        margin-right: 21px;
+        margin-top: 13px;
       }
     }
   }
@@ -1141,9 +1169,12 @@ input {
         }
     }
     .what-is-inte{
+      .title{
+        font-size: 50px;
+      }
       .description{
         p{
-          font-size: 20px;
+          font-size: 25px;
         }
       }
       .buttons{
