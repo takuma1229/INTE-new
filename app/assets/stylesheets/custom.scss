@@ -1214,6 +1214,11 @@ input {
      }
    }
 
+   .user-wrapper{
+     width: 70%;
+     margin: 0 auto;
+   }
+
    .user-home-wrapper{
      .micropost-feed{
        h3{
@@ -1248,6 +1253,9 @@ input {
         }
         .content{
           font-size: 20px;
+          img{
+            max-width: 600px;
+          }
         }
        }
      }
