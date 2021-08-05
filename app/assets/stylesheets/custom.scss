@@ -337,9 +337,23 @@ header{
       background-color: #EFCC8E;
     }
   }
+  .image{
+    .image-form{
+    }
+  }
+  .button{
+    text-align: center;
+    .submit{
+      width: 50%;
+      border-radius: 1000px;
+    }
+  }
   .micropost-feed{
     width: 90%;
     margin: 0 auto;
+    h3{
+      text-align: center;
+    }
     .microposts{
       .micropost-wrapper{
         .right-part{
@@ -356,6 +370,10 @@ header{
           }
         }
       }
+    }
+    .paginate-bar{
+      margin: 0 auto;
+      text-align: center;
     }
   }
   
@@ -1192,6 +1210,45 @@ input {
        }
        .change-email{
          height: 35px;
+       }
+     }
+   }
+
+   .user-home-wrapper{
+     .micropost-feed{
+       h3{
+         font-size: 40px;
+       }
+       .microposts{
+         width: 70%;
+         margin: 0 auto;
+       }
+     }
+     .micropost-form{
+       width: 70%;
+       margin: 0 auto;
+     }
+   }
+
+   .micropost-wrapper{
+     .micropost-part{
+       .left-part{
+         .micropost-user-image{
+           img{
+             width: 70px;
+             height: 70px;
+           }
+         }
+       }
+       .right-part{
+        .user{
+          a{
+            font-size: 25px;
+          }
+        }
+        .content{
+          font-size: 20px;
+        }
        }
      }
    }

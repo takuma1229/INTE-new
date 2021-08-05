@@ -4,9 +4,12 @@
     <%= f.text_area :content, placeholder: "Post to find someone to talk with!(Maximum is 140 characters.)", class: "text-form" %>
   </div>
   <span class="image">
-    <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png"  %>
+    <%= f.label :image_file, "Select image", class:"image-input-btn" %>
+    <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", class:"image-form"  %>
   </span>
-  <%= f.submit "Post", class: "btn btn-primary" %>
+  <div class="button">
+    <%= f.submit "Post", class: "btn btn-info submit" %>
+  </div>  
   
 <% end %> 
 
