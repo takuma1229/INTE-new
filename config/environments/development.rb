@@ -10,7 +10,7 @@ Rails.application.configure do
       address:              'smtp.gmail.com',
       domain:               'gmail.com',
       user_name:            'inteofficial@gmail.com',
-      password:             'otukare48',
+      password:             Rails.application.credentials.google[:GOOGLE_APP_PASSWORD],
       authentication:       'login',
       enable_starttls_auto: true
     }
