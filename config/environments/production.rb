@@ -66,11 +66,13 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.default_url_options = { host: 'gmail.com'}
+  # config.action_mailer.default_url_options = { host: 'gmail.com'}
+  config.action_mailer.default_url_options = { host: 'protected-island-35085.herokuapp.com'}
+
   
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  host = 'protected-island-35085.herokuapp.com'
+  # host = 'protected-island-35085.herokuapp.com'
   config.action_mailer.smtp_settings = {
       port:                 587,
       address:              'smtp.gmail.com',
