@@ -70,10 +70,11 @@ Rails.application.configure do
   
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
+  host = 'protected-island-35085.herokuapp.com'
   config.action_mailer.smtp_settings = {
       port:                 587,
       address:              'smtp.gmail.com',
-      domain:               'gmail.com',
+      domain:               host,
       user_name:            'inteofficial@gmail.com',
       password:             'xdasewkpicroufvm',
       authentication:       'login',
