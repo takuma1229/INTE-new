@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'password_resets/edit'
   get 'sessions/new'
   root 'static_pages#index'
+  get 'auth/:provider/callback', to: 'sessions#create'
   resources :static_pages, only: [:index]
   resources :users do
     member do
