@@ -1217,6 +1217,41 @@ input {
    .user-wrapper{
      width: 70%;
      margin: 0 auto;
+     .icon{
+       .user-image{
+         width: 100px;
+         height: 100px;
+       }
+     }
+     .basic-info{
+       .user-name{
+         font-size: 40px;
+       }
+       .stats{
+         .stats-wrapper{
+           .stats{
+             font-size: 25px;
+           }
+         }
+       }
+       .user-details{
+         margin-top: 40px;
+        .content{
+          font-size: 20px;
+        }
+        .self-introduction{
+          margin-top: 50px;
+        }
+       }
+     }
+     .user-microposts{
+       img{
+         width: 70px;
+       }
+       .liked-by{
+         margin-top: 50px;
+       }
+     }
    }
 
    .user-home-wrapper{
@@ -1240,8 +1275,8 @@ input {
        .left-part{
          .micropost-user-image{
            img{
-             width: 70px;
-             height: 70px;
+             width: 50px;
+             height: 50px;
            }
          }
        }
