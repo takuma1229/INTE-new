@@ -533,6 +533,7 @@ header{
     margin: 0 auto;
     .microposts-square{
       .microposts{
+        
         .micropost-part{
           .right-part{
             .delete-button{
@@ -548,6 +549,9 @@ header{
             }
           }
         }
+      }
+      .pagination-bar{
+        text-align: center;
       }
     }
   }
@@ -1245,9 +1249,6 @@ input {
        }
      }
      .user-microposts{
-       img{
-         width: 70px;
-       }
        .liked-by{
          margin-top: 50px;
        }
