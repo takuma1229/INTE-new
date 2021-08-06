@@ -82,7 +82,9 @@
         <ol class="microposts">
           <%= render @microposts %>
         </ol>
-        <%= will_paginate @microposts %>
+        <div class="pagination-bar">
+          <%= will_paginate @microposts %>
+        </div>  
       <% end %>
     </div>
     <div class="liked-by">
