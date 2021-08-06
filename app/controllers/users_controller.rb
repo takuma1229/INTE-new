@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:show, :edit, :update, :destroy, :following, :followers]
   before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :activated?, only: [:edit, :update, :destroy]
   
   def show
     @user = User.find(params[:id])
@@ -61,6 +62,7 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     if @user.update(user_update_params)
       redirect_to @user
+      flash.now[:success] = "Welcome to INTE! Firstly, let's search users to follow. Search button is in the top! "
     else
       flash.now[:danger] = "Self introduction is too long(maximum 400 characters)."
       render 'detail'
@@ -182,6 +184,15 @@ class UsersController < ApplicationController
         redirect_to sessions_url
       end
     end
+
+    def activated?
+      @user = User.find_by(id: current_user.id)
+      if @user.activated == false
+        flash[:danger] = "Your account is not activated. Please click the link in the mail sent to your address."
+        redirect_to root_path
+      end
+    end
+    
     
     
 
