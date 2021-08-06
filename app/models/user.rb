@@ -16,12 +16,12 @@ class User < ApplicationRecord
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save   :downcase_email
   before_create :create_activation_digest
-  validates :name, presence: true, unless: :uid?, length: { maximum: 25 }
+  validates :name, presence: true, length: { maximum: 25 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, presence: true, unless: :uid?, length: { maximum: 255 }, 
+  validates :email, presence: true, length: { maximum: 255 }, 
                     format: { with: VALID_EMAIL_REGEX }, uniqueness: true
-  has_secure_password validations: false
-  validates :password, presence: true, unless: :uid?, length: { minimum: 6 } , allow_nil: true
+  has_secure_password
+  validates :password, presence: true, length: { minimum: 6 } , allow_nil: true
   mount_uploader :image, ImageUploader
   validates :self_introduction, length: {maximum: 400}
 
@@ -107,18 +107,6 @@ class User < ApplicationRecord
   #すでにその投稿をいいねしているのかどうかを判定
   def already_liked?(post)
     self.likes.exists?(micropost_id: post.id)
-  end
-
-  def self.find_or_create_from_auth(auth)
-    provider = auth[:provider]
-    uid = auth[:uid]
-    name = auth[:info][:name]
-    image = auth[:info][:image]
-
-    self.find_or_create_by(provider: provider, uid: uid) do |user|
-      user.name = name
-      user.image_url = image
-    end
   end
 
   private
