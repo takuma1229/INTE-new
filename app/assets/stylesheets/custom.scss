@@ -683,6 +683,14 @@ header{
         }
       }
     }
+    .new_message{
+      text-align: center;
+      #message_content{
+        width: 70%;
+        margin: 0 auto;
+        margin-bottom: 40px;
+      }
+    }
   }
   .messages{
     .message{
@@ -703,7 +711,14 @@ header{
       strong{
         display: block;
       }
+      
     }
+    
+  }
+  .back-to-dm{
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 100px;
   }
 }
 
@@ -1295,6 +1310,41 @@ input {
         }
        }
      }
+   }
+
+   .dm-wrapper{
+     .members{
+       h4{
+         font-size: 30px;
+       }
+       h5{
+         font-size: 20px;
+       }
+     }
+     .messages{
+       .message{
+         width: 70%;
+         margin: 0 auto;
+         padding-bottom: 10px;
+         a{
+           font-size: 25px;
+         }
+         strong{
+           font-size: 20px;
+         }
+       }
+     }
+     .back-to-dm{
+       a{
+         font-size: 25px;
+       }
+     }
+   }
+
+   .dm-index-wrapper{
+     width: 70%;
+     margin: 0 auto;
+     margin-top: 60px;
    }
    
   // なんか適用されない！
