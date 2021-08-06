@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_06_045328) do
+ActiveRecord::Schema.define(version: 2021_07_31_051558) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -108,9 +108,6 @@ ActiveRecord::Schema.define(version: 2021_08_06_045328) do
     t.string "skype"
     t.string "discord"
     t.string "other"
-    t.string "uid"
-    t.string "provider"
-    t.string "image_url"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
