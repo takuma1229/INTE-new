@@ -120,6 +120,7 @@ GEM
       sassc (>= 1.11)
     globalid (0.5.1)
       activesupport (>= 5.0)
+    hashie (4.1.0)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     image_processing (1.9.3)
@@ -161,6 +162,17 @@ GEM
       racc (~> 1.4)
     nokogiri (1.11.7-x86_64-linux)
       racc (~> 1.4)
+    oauth (0.5.6)
+    omniauth (2.0.4)
+      hashie (>= 3.4.6)
+      rack (>= 1.6.2, < 3)
+      rack-protection
+    omniauth-oauth (1.2.0)
+      oauth
+      omniauth (>= 1.0, < 3)
+    omniauth-twitter (1.4.0)
+      omniauth-oauth (~> 1.1)
+      rack
     pg (1.1.4)
     pry (0.14.1)
       coderay (~> 1.1)
@@ -172,6 +184,8 @@ GEM
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
+    rack-protection (2.1.0)
+      rack
     rack-proxy (0.7.0)
       rack
     rack-test (1.1.0)
@@ -297,6 +311,7 @@ DEPENDENCIES
   mini_magick (= 4.9.5)
   minitest
   minitest-reporters
+  omniauth-twitter
   pg (= 1.1.4)
   pry-rails
   puma (= 4.3.6)
