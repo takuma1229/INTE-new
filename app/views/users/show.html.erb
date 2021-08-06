@@ -60,7 +60,7 @@
         <h3 class="content">Skype URL : <%= link_to "#{@user.name}'s skype", @user.skype %></h3>
       <% end %>
       <% unless @user.discord.nil? %>
-        <h3 class="content">Discord URL : <%= link_to "#{@user.name}'s discord", @user.discord %></h3>
+        <h3 class="content">Discord ID : <%= @user.discord %> </h3>
       <% end %>
       <% unless @user.other.nil? %>
         <h3 class="content">Other Service URL : <%= link_to "#{@user.name}'s other service link", @user.other %></h3>
@@ -85,11 +85,44 @@
         <%= will_paginate @microposts %>
       <% end %>
     </div>
+    <div class="liked-by">
+    <h3>Posts liked by this user</h3>
+    <% @user.liked_posts.each do |post| %>
+    <div class="micropost-wrapper">
+        <li id="micropost-<%= post.id %>" class="micropost-part">
+        <div class="left-part">
+          <% if post.user.image? %>
+            <%= link_to image_tag("#{post.user.image}"), post.user, class: "micropost-user-image user-image" %>
+          <% else %>
+            <%= link_to image_tag("default_user.jpeg"), post.user, class: "micropost-user-image" %>
+          <% end %>  
+        </div>
+        <div class="right-part">
+          <span class="user"><%= link_to post.user.name, post.user %></span>
+          <span class="content">
+            <%= post.content %>
+            <br>
+            <%= image_tag post.display_image if post.image.attached?%>
+          </span>
+          <span class="timestamp">
+          Posted <%= time_ago_in_words(post.created_at) %> ago.
+          </span>
+          <span class="show-detail"> 
+            <%= link_to "show detail→", micropost_path(post) %>
+          </span>
+          <span>
+            <% if current_user?(post.user) %>
+              <%= link_to "delete", micropost, method: :delete,
+                                              data: {confirm: "You sure?"}, class: "delete-button" %>
+            <% end%>
+          </span>
+        </div>
+      </li>
+    </div>
+    <% end %>
+    </div>
   </div>
-  <h3>Posts liked by this user</h3>
-  <% @user.liked_posts.each do |post| %>
-    <%= post.user.email %>
-    <%= post.content %>
-  <% end %>
+  
+  </div>
 
 </div>
