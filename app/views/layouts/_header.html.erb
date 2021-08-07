@@ -9,6 +9,13 @@
         <li><i class="fas fa-home color"></i><%= link_to "Home", homes_path %></li>
         <li><i class="far fa-envelope color"></i><%= link_to "DM", rooms_path %></li>
         <li><i class="fas fa-search color"></i><%= link_to "Search", search_users_path %></li>
+        <div class="icon">
+          <% if current_user.image? %>
+            <%= link_to image_tag("#{current_user.image.url}", class: "user-image"), user_path(current_user) %>
+          <% else %>
+            <%= link_to image_tag("default_user.jpeg", class: "user-image"), user_path(current_user) %>  
+          <% end %>
+        </div>
         <%= link_to "Log out", session_path(id: current_user.id), method: :delete, class: "logout btn btn-primary"  %>
       </ul>
     </li>
