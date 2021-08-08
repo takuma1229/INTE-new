@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   get 'password_resets/edit'
   get 'sessions/new'
   root 'static_pages#index'
-  resources :static_pages, only: [:index]
+  resources :static_pages, only: [:index] do
+    collection do
+      get :japanese
+    end
+  end
   resources :users do
     member do
       get 'detail'

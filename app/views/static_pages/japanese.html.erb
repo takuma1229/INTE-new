@@ -1,0 +1,55 @@
+
+<div class="japanese-home-wrapper">
+  <!--<div class="container">-->
+    <div class="introduction">
+      <div class="main-intro">
+        <h1 class="for-sm">英会話にお金を払う必要は、</h1>
+        <h1 class="for-sm">もうありません。</h1>
+        <div class="main-intro-pc">
+          <h2 class="d-none main-for-pc">英会話にお金を払う必要は、もうありません。</h2>
+        </div>
+      </div>
+      <div class="connect">
+        <p>INTEは</p>
+        <p>①英語を学びたい日本人</p>
+        <p>②日本語を学びたい英語話者</p>
+        <p>この二者をマッチングする<br>完全無料のサービスです。</p>
+      </div>
+      <% if current_user.nil? %>
+        <div class="buttons">
+          <%= link_to "新規登録", new_user_path, class: "btn btn-primary btn-lg" %>
+          <%= link_to "ログイン", sessions_path,  class: "btn btn-success btn-lg" %>
+        </div>
+      <% else %>
+        <div class="buttons">
+          <%= link_to "Home", homes_path, class: "btn btn-info btn-lg" %>
+        </div>  
+      <% end %>  
+    </div>
+    <div class="what-is-inte">
+      <h1 class="title">What is INTE?</h1>
+      <div class="image">
+        <img src="/assets/call-bro.svg" alt="" class="video-call">
+      </div>
+      <div class="description">
+        <p>①日本人と英語話者をマッチング</p>
+      </div>
+      <div class="description">
+        <p>②完全無料</p>
+      </div>
+      <div class="description">
+        <p>③実際の会話はお好みのSNSで。</p>
+      </div>
+      <% if current_user.nil? %>
+        <div class="buttons">
+          <%= link_to "新規登録", new_user_path, class: "btn btn-primary btn-lg" %>
+          <%= link_to "ログイン", sessions_path,  class: "btn btn-success btn-lg" %>
+        </div>
+      <% else %>
+        <div class="buttons">
+          <%= link_to "Home", homes_path, class: "btn btn-info btn-lg" %>
+        </div>  
+      <% end %>  
+    </div>
+  <!--</div>-->
+</div>
