@@ -1,6 +1,7 @@
 class LikesController < ApplicationController
   def create
     @micropost = Micropost.find_by(id: params[:micropost_id])
+    # binding.pry
     @like = current_user.likes.create(micropost_id: params[:micropost_id])
     # redirect_back(fallback_location: root_path)
   end

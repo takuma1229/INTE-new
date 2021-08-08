@@ -16,7 +16,11 @@ class MicropostsController < ApplicationController
 
   def show
     @micropost = Micropost.find(params[:id])
-    @like = Like.new
+    if current_user && current_user.already_liked?(@micropost)
+      @like = Like.where(user_id: current_user.id, micropost_id: @micropost.id)
+    else
+      @like = Like.new
+    end
   end
 
   def destroy
