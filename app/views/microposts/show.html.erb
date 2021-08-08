@@ -8,11 +8,10 @@
     <h2><%= link_to "#{@micropost.user.name}", @micropost.user %></h2>
     <h3><%= @micropost.content %></h3>
     <h3>Likes: <%= @micropost.likes.count %></h3>
-    <% if current_user.already_liked?(@micropost) %>
-      <%= button_to 'Unlike', micropost_like_path(@micropost), method: :delete, class: "btn btn-dark unlike" %>
-    <% else %>
-      <%= button_to 'Like!', micropost_likes_path(@micropost), class: "btn btn-primary like" %>
-    <% end %>
+    <div class="likes_buttons_<%= @micropost.id %>">
+      <%= render partial: 'likes/like', locals: { micropost: @micropost} %>
+      
+    </div>  
   </div>
   <h5>Liked by :</h5>
   <% @micropost.liked_users.each do |user| %>
