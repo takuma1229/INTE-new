@@ -14,14 +14,15 @@
     </div>  
   </div>
   <h5>Liked by :</h5>
-  <% @micropost.liked_users.each do |user| %>
+  <% @micropost.likes.each do |likes| %>
     <li>
-    <% if user.image? %>
-      <%= image_tag user.image.url, class: "user-image" %>
+    <% if likes.user.image? %>
+      <%= image_tag likes.user.image.url, class: "user-image" %>
+      <%= link_to "#{likes.user.name}", likes.user %>
     <% else %>
       <%=  image_tag "default_user.jpeg", class: "user-image" %>  
+      <%= link_to "#{likes.user.name}", likes.user %>
     <% end %>
-    <%= link_to "#{@micropost.user.name}", @micropost.user %>
     </li>
   <% end %>
   <div class="to-home-button">
