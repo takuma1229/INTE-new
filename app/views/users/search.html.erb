@@ -1,53 +1,109 @@
-<div class="user-search-wrapper">
-  <h1>User search</h1>
-  <%= form_with url: search_users_path, method: :get, local: true do |f| %>
-    <%= f.label :name, "Name" %>
-    <%= f.text_field :name %>
+<% if current_user.mother_tongue == "Japanese" %>
+  <div class="user-search-wrapper">
+    <h1>ユーザー検索</h1>
+    <%= form_with url: search_users_path, method: :get, local: true do |f| %>
+      <%= f.label :name, "名前" %>
+      <%= f.text_field :name %>
 
-    <%= f.label :mother_tongue, "Mother Tongue" %>
-    <%= f.select :mother_tongue, [["English", "English"], ["Japanese", "Japanese"], 
-    ["Other","other"]], include_blank: "Please select.", class:"form-control" %>
+      <%= f.label :mother_tongue, "母語" %>
+      <%= f.select :mother_tongue, [["English", "English"], ["Japanese", "Japanese"], 
+      ["Other","other"]], include_blank: "Please select.", class:"form-control" %>
 
-    <%= f.label :japanese_level, "Japanese Level" %>
-    <%= f.select :japanese_level, [["Beginner", "Beginner"], ["Capable of quite basic communication", "Capable of quite basic communication"], 
-    ["Capable of daily conversation","Capable of daily conversation"], ["Capable of advanced conversation","Capable of advanced conversation"], ["Almost native level","Almost native level"],
-    ["Native","Native"]], include_blank: "Please select.", class:"form-control" %>
+      <%= f.label :japanese_level, "日本語のレベル" %>
+      <%= f.select :japanese_level, [["Beginner", "Beginner"], ["Capable of quite basic communication", "Capable of quite basic communication"], 
+      ["Capable of daily conversation","Capable of daily conversation"], ["Capable of advanced conversation","Capable of advanced conversation"], ["Almost native level","Almost native level"],
+      ["Native","Native"]], include_blank: "Please select.", class:"form-control" %>
 
-    <%= f.label :english_level, "English Level" %>
-    <%= f.select :english_level, [["Beginner", "Beginner"], ["Capable of quite basic communication", "Capable of quite basic communication"], 
-    ["Capable of daily conversation","Capable of daily conversation"], ["Capable of advanced conversation","Capable of advanced conversation"], ["Almost native level","Almost native level"],
-    ["Native","Native"]], include_blank: "Please select.", class:"form-control" %>
+      <%= f.label :english_level, "英語のレベル" %>
+      <%= f.select :english_level, [["Beginner", "Beginner"], ["Capable of quite basic communication", "Capable of quite basic communication"], 
+      ["Capable of daily conversation","Capable of daily conversation"], ["Capable of advanced conversation","Capable of advanced conversation"], ["Almost native level","Almost native level"],
+      ["Native","Native"]], include_blank: "Please select.", class:"form-control" %>
 
-    <%= f.submit :search, class:"btn btn-primary submit" %>
-  <% end %>
+      <%= f.submit :search, class:"btn btn-primary submit" %>
+    <% end %>
 
-  <table class="results">
-    <thead>
-      <tr>
-        <th>Results</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @users.each do |user| %>
+    <table class="results">
+      <thead>
         <tr>
-          <td>
-            <div class="user-left">
-              <% if user.image? %>
-                <%= image_tag user.image.url, class: "user-image" %>
-              <% else %>
-                <%=  image_tag "default_user.jpeg", class: "user-image" %>  
-              <% end %>
-            </div> 
-            <div class="user-right">
-              <%= link_to "#{user.name}", user_path(user) %>
-              <p>Mother Tongue : <%= user.mother_tongue %></p>
-              <p>Japanese Level : <%= user.japanese_level %></p>
-              <p>English Level : <%= user.english_level %></p>
-            </div>
-          </td>
+          <th>結果</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td>
+              <div class="user-left">
+                <% if user.image? %>
+                  <%= image_tag user.image.url, class: "user-image" %>
+                <% else %>
+                  <%=  image_tag "default_user.jpeg", class: "user-image" %>  
+                <% end %>
+              </div> 
+              <div class="user-right">
+                <%= link_to "#{user.name}", user_path(user) %>
+                <p>母語 : <%= user.mother_tongue %></p>
+                <p>日本語のレベル : <%= user.japanese_level %></p>
+                <p>英語のレベル : <%= user.english_level %></p>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-</div>
+  </div>
+<% else %>
+  <div class="user-search-wrapper">
+    <h1>User search</h1>
+    <%= form_with url: search_users_path, method: :get, local: true do |f| %>
+      <%= f.label :name, "Name" %>
+      <%= f.text_field :name %>
+
+      <%= f.label :mother_tongue, "Mother Tongue" %>
+      <%= f.select :mother_tongue, [["English", "English"], ["Japanese", "Japanese"], 
+      ["Other","other"]], include_blank: "Please select.", class:"form-control" %>
+
+      <%= f.label :japanese_level, "Japanese Level" %>
+      <%= f.select :japanese_level, [["Beginner", "Beginner"], ["Capable of quite basic communication", "Capable of quite basic communication"], 
+      ["Capable of daily conversation","Capable of daily conversation"], ["Capable of advanced conversation","Capable of advanced conversation"], ["Almost native level","Almost native level"],
+      ["Native","Native"]], include_blank: "Please select.", class:"form-control" %>
+
+      <%= f.label :english_level, "English Level" %>
+      <%= f.select :english_level, [["Beginner", "Beginner"], ["Capable of quite basic communication", "Capable of quite basic communication"], 
+      ["Capable of daily conversation","Capable of daily conversation"], ["Capable of advanced conversation","Capable of advanced conversation"], ["Almost native level","Almost native level"],
+      ["Native","Native"]], include_blank: "Please select.", class:"form-control" %>
+
+      <%= f.submit :search, class:"btn btn-primary submit" %>
+    <% end %>
+
+    <table class="results">
+      <thead>
+        <tr>
+          <th>Results</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td>
+              <div class="user-left">
+                <% if user.image? %>
+                  <%= image_tag user.image.url, class: "user-image" %>
+                <% else %>
+                  <%=  image_tag "default_user.jpeg", class: "user-image" %>  
+                <% end %>
+              </div> 
+              <div class="user-right">
+                <%= link_to "#{user.name}", user_path(user) %>
+                <p>Mother Tongue : <%= user.mother_tongue %></p>
+                <p>Japanese Level : <%= user.japanese_level %></p>
+                <p>English Level : <%= user.english_level %></p>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+<% end %>

@@ -1,68 +1,139 @@
-<% provide(:title, 'edit') %>
+<% if @user.mother_tongue == "Japanese" %>
+  <% provide(:title, 'edit') %>
 
-<div class="edit-wrapper">
-  <h1 class="edit">Edit</h1>
-  
-  <div class="row signup-forms">
-    <div class="col-md-6 col-md-offset-3">
-      <%= form_with(model: @user, url: "/users/#{@user.id}", local: true) do |f| %>
-        <%= render 'shared/error_messages',object: f.object %>
-      
-        <%= f.label :name, "Nickname" %>
-        <%= f.text_field :name, class: 'form-control', placeholder: "#{@user.name}" %>
-  
-        <%= f.label :image %>
-        <%= f.file_field :image, class: "form-control image-form" %>
-      
-   
-      
-        <%= f.label :mother_tongue, "Mother Tongue" %>
-        <%= f.select :mother_tongue, [["English", "English"], ["Japanese", "Japanese"], 
-        ["Other","other"]], include_blank: "Please select.", class:"form-control" %>
+  <div class="edit-wrapper">
+    <h1 class="edit">設定</h1>
+    
+    <div class="row signup-forms">
+      <div class="col-md-6 col-md-offset-3">
+        <%= form_with(model: @user, url: "/users/#{@user.id}", local: true) do |f| %>
+          <%= render 'shared/error_messages',object: f.object %>
         
-        <%= f.label :japanese_level, "Japanese Level" %>
-        <%= f.select :japanese_level, [["Beginner", "Beginner"], ["Capable of quite basic communication", "Capable of quite basic communication"], 
-        ["Capable of daily conversation","Capable of daily conversation"], ["Capable of advanced conversation","Capable of advanced conversation"], ["Almost native level","Almost native level"],
-        ["Native","Native"]], include_blank: "Please select.", class:"form-control" %>
+          <%= f.label :name, "ニックネーム" %>
+          <%= f.text_field :name, class: 'form-control', placeholder: "#{@user.name}" %>
+    
+          <%= f.label :image, "ユーザー画像" %>
+          <%= f.file_field :image, class: "form-control image-form" %>
         
-        <%= f.label :english_level, "English Level" %>
-        <%= f.select :english_level, [["Beginner", "Beginner"], ["Capable of quite basic communication", "Capable of quite basic communication"], 
-        ["Capable of daily conversation","Capable of daily conversation"], ["Capable of advanced conversation","Capable of advanced conversation"], ["Almost native level","Almost native level"],
-        ["Native","Native"]], include_blank: "Please select.", class:"form-control" %>
+    
         
-        <%= f.label :gender, "Gender(optional)" %>
-        <%= f.select :gender, [["he/him", "he/him"], ["she/her", "she/her"], 
-        ["they/them","they/them"], ["I don't want to tell","I don't want to tell"]], include_blank: "Please select.", class:"form-control" %>
-        
-        <%= f.label :region, "Region" %>
-        <%= f.select :region, [["Asia", "Asia"], ["Europe", "Europe"], 
-        ["Africa","Africa"], ["North/Central America","North/Central America"], ["South America","South America"],
-        ["Oceania","Oceania"], ["Other","Other"]], include_blank: "Please select.", class:"form-control" %>
+          <%= f.label :mother_tongue, "母語" %>
+          <%= f.select :mother_tongue, [["English", "English"], ["Japanese", "Japanese"], 
+          ["Other","other"]], include_blank: "Please select.", class:"form-control" %>
+          
+          <%= f.label :japanese_level, "日本語レベル" %>
+          <%= f.select :japanese_level, [["Beginner", "Beginner"], ["Capable of quite basic communication", "Capable of quite basic communication"], 
+          ["Capable of daily conversation","Capable of daily conversation"], ["Capable of advanced conversation","Capable of advanced conversation"], ["Almost native level","Almost native level"],
+          ["Native","Native"]], include_blank: "Please select.", class:"form-control" %>
+          
+          <%= f.label :english_level, "英語レベル" %>
+          <%= f.select :english_level, [["Beginner", "Beginner"], ["Capable of quite basic communication", "Capable of quite basic communication"], 
+          ["Capable of daily conversation","Capable of daily conversation"], ["Capable of advanced conversation","Capable of advanced conversation"], ["Almost native level","Almost native level"],
+          ["Native","Native"]], include_blank: "Please select.", class:"form-control" %>
+          
+          <%= f.label :gender, "ジェンダー" %>
+          <%= f.select :gender, [["he/him", "he/him"], ["she/her", "she/her"], 
+          ["they/them","they/them"], ["I don't want to tell","I don't want to tell"]], include_blank: "Please select.", class:"form-control" %>
+          
+          <%= f.label :region, "地域" %>
+          <%= f.select :region, [["Asia", "Asia"], ["Europe", "Europe"], 
+          ["Africa","Africa"], ["North/Central America","North/Central America"], ["South America","South America"],
+          ["Oceania","Oceania"], ["Other","Other"]], include_blank: "Please select.", class:"form-control" %>
 
-        <%= f.label :purpose, "Purpose of Learning" %>
-        <%= f.select :purpose, [["Business", "Business"], ["School Classes", "School Classes"], 
-        ["Entrance Exam","Entrance Exam"], ["Trip","Trip"], ["Want to talk with Foreingers","Want to talk with Foreingers"], 
-        ["Qualifying Exam","Qualifying Exam"], ["Hobby","Hobby"], ["Other", "Other"]], include_blank: "Please select.", class:"form-control" %>
+          <%= f.label :purpose, "学習目的" %>
+          <%= f.select :purpose, [["Business", "Business"], ["School Classes", "School Classes"], 
+          ["Entrance Exam","Entrance Exam"], ["Trip","Trip"], ["Want to talk with Foreingers","Want to talk with Foreingers"], 
+          ["Qualifying Exam","Qualifying Exam"], ["Hobby","Hobby"], ["Other", "Other"]], include_blank: "Please select.", class:"form-control" %>
+          
+          <%= f.label :self_introduction, "自己紹介" %>
+          <%= f.text_area :self_introduction, class: 'form-control self-intro', placeholder: "英語で書くことをお勧めします。簡単な文でも問題ありません。" %>
+          
+          <%= f.label :skype, "Skype URL" %>
+          <%= f.text_field :skype, class: 'form-control' %>
+          
+          <%= f.label :discord, "Discord URL" %>
+          <%= f.text_field :discord, class: 'form-control' %>
+          
+          <%= f.label :other, "他サービスのURL" %>
+          <%= f.text_field :other, class: 'form-control' %>
+          
+    
+          <%= f.submit "更新", class: "btn btn-primary update" %>
+        <% end %>
         
-        <%= f.label :self_introduction, "Self Introduction" %>
-        <%= f.text_area :self_introduction, class: 'form-control self-intro', placeholder: "It is recommended that you write in simple English. 英語で書くことをお勧めします。簡単な文でも問題ありません。" %>
-        
-        <%= f.label :skype, "Skype URL" %>
-        <%= f.text_field :skype, class: 'form-control' %>
-        
-        <%= f.label :discord, "Discord URL" %>
-        <%= f.text_field :discord, class: 'form-control' %>
-        
-        <%= f.label :other, "Other Service URL" %>
-        <%= f.text_field :other, class: 'form-control' %>
-        
-  
-        <%= f.submit "Update Your Information", class: "btn btn-primary update" %>
-      <% end %>
-      
-      <div class="buttons">
-        <%= link_to "Delete Account", delete_user_path, class: "btn btn-danger delete-user" %>
+        <div class="buttons">
+          <%= link_to "アカウント削除", delete_user_path, class: "btn btn-danger delete-user" %>
+        </div>
       </div>
     </div>
   </div>
-</div>
+<% else %>
+  <% provide(:title, 'edit') %>
+
+  <div class="edit-wrapper">
+    <h1 class="edit">Edit</h1>
+    
+    <div class="row signup-forms">
+      <div class="col-md-6 col-md-offset-3">
+        <%= form_with(model: @user, url: "/users/#{@user.id}", local: true) do |f| %>
+          <%= render 'shared/error_messages',object: f.object %>
+        
+          <%= f.label :name, "Nickname" %>
+          <%= f.text_field :name, class: 'form-control', placeholder: "#{@user.name}" %>
+    
+          <%= f.label :image %>
+          <%= f.file_field :image, class: "form-control image-form" %>
+        
+    
+        
+          <%= f.label :mother_tongue, "Mother Tongue" %>
+          <%= f.select :mother_tongue, [["English", "English"], ["Japanese", "Japanese"], 
+          ["Other","other"]], include_blank: "Please select.", class:"form-control" %>
+          
+          <%= f.label :japanese_level, "Japanese Level" %>
+          <%= f.select :japanese_level, [["Beginner", "Beginner"], ["Capable of quite basic communication", "Capable of quite basic communication"], 
+          ["Capable of daily conversation","Capable of daily conversation"], ["Capable of advanced conversation","Capable of advanced conversation"], ["Almost native level","Almost native level"],
+          ["Native","Native"]], include_blank: "Please select.", class:"form-control" %>
+          
+          <%= f.label :english_level, "English Level" %>
+          <%= f.select :english_level, [["Beginner", "Beginner"], ["Capable of quite basic communication", "Capable of quite basic communication"], 
+          ["Capable of daily conversation","Capable of daily conversation"], ["Capable of advanced conversation","Capable of advanced conversation"], ["Almost native level","Almost native level"],
+          ["Native","Native"]], include_blank: "Please select.", class:"form-control" %>
+          
+          <%= f.label :gender, "Gender(optional)" %>
+          <%= f.select :gender, [["he/him", "he/him"], ["she/her", "she/her"], 
+          ["they/them","they/them"], ["I don't want to tell","I don't want to tell"]], include_blank: "Please select.", class:"form-control" %>
+          
+          <%= f.label :region, "Region" %>
+          <%= f.select :region, [["Asia", "Asia"], ["Europe", "Europe"], 
+          ["Africa","Africa"], ["North/Central America","North/Central America"], ["South America","South America"],
+          ["Oceania","Oceania"], ["Other","Other"]], include_blank: "Please select.", class:"form-control" %>
+
+          <%= f.label :purpose, "Purpose of Learning" %>
+          <%= f.select :purpose, [["Business", "Business"], ["School Classes", "School Classes"], 
+          ["Entrance Exam","Entrance Exam"], ["Trip","Trip"], ["Want to talk with Foreingers","Want to talk with Foreingers"], 
+          ["Qualifying Exam","Qualifying Exam"], ["Hobby","Hobby"], ["Other", "Other"]], include_blank: "Please select.", class:"form-control" %>
+          
+          <%= f.label :self_introduction, "Self Introduction" %>
+          <%= f.text_area :self_introduction, class: 'form-control self-intro', placeholder: "It is recommended that you write in simple English so that everyone can read." %>
+          
+          <%= f.label :skype, "Skype URL" %>
+          <%= f.text_field :skype, class: 'form-control' %>
+          
+          <%= f.label :discord, "Discord URL" %>
+          <%= f.text_field :discord, class: 'form-control' %>
+          
+          <%= f.label :other, "Other Service URL" %>
+          <%= f.text_field :other, class: 'form-control' %>
+          
+    
+          <%= f.submit "Update Your Information", class: "btn btn-primary update" %>
+        <% end %>
+        
+        <div class="buttons">
+          <%= link_to "Delete Account", delete_user_path, class: "btn btn-danger delete-user" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

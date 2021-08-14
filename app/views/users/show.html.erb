@@ -1,130 +1,264 @@
+<% if current_user.mother_tongue == "Japanese" %>
 <% provide(:title, @user.name) %>
-<div class="user-wrapper">
-  <div class="icon">
-    <% if @user.image? %>
-      <%= image_tag @user.image.url, class: "user-image" %>
-    <% else %>
-      <%=  image_tag "default_user.jpeg", class: "user-image" %>  
-    <% end %>
-  </div>
-  <div class="basic-info">
-    <h1 class="user-name">
-      <%= @user.name %>
-
-      <% if @user == current_user %>
-        <div class="setting">
-          <%= link_to "Settings", edit_user_path(current_user), class: "btn btn-primary" %>
-        </div>
+  <div class="user-wrapper">
+    <div class="icon">
+      <% if @user.image? %>
+        <%= image_tag @user.image.url, class: "user-image" %>
+      <% else %>
+        <%=  image_tag "default_user.jpeg", class: "user-image" %>  
       <% end %>
-      
-      <section class="stats">
-        <%= render 'shared/stats' %>
-      </section>
+    </div>
+    <div class="basic-info">
+      <h1 class="user-name">
+        <%= @user.name %>
 
-      <div class="direct-message">
-        <% if current_user %>
-          <% if @user.id == current_user.id %>
+        <% if @user == current_user %>
+          <div class="setting">
+            <%= link_to "設定", edit_user_path(current_user), class: "btn btn-primary" %>
+          </div>
+        <% end %>
+        
+        <section class="stats">
+          <%= render 'shared/stats' %>
+        </section>
 
-          <% else %>
-            <% if @isRoom == true %>
-              <button><p><a href="/rooms/<%= @roomId %>"><i class="far fa-envelope"></i></a></button>
+        <div class="direct-message">
+          <% if current_user %>
+            <% if @user.id == current_user.id %>
+
             <% else %>
-              <%= form_for @room do |f| %>
-                <%= fields_for @entry do |e| %>
-                  <%= e.hidden_field :user_id, :value=> @user.id %>
-                <% end %>
-                <%= f.button :type => "submit", style: 'border-style: none;' do %>
-                  <i class="far fa-envelope"></i>
+              <% if @isRoom == true %>
+                <button><p><a href="/rooms/<%= @roomId %>"><i class="far fa-envelope"></i></a></button>
+              <% else %>
+                <%= form_for @room do |f| %>
+                  <%= fields_for @entry do |e| %>
+                    <%= e.hidden_field :user_id, :value=> @user.id %>
+                  <% end %>
+                  <%= f.button :type => "submit", style: 'border-style: none;' do %>
+                    <i class="far fa-envelope"></i>
+                  <% end %>
                 <% end %>
               <% end %>
             <% end %>
           <% end %>
+        </div>
+        <%= render 'follow_form' if logged_in? %>
+      </h1>
+      
+      
+      
+      
+      
+
+      <div class="user-details">
+        <h3 class="content">母語 : <%= @user.mother_tongue %></h3>
+        <h3 class="content">日本語のレベル : <%= @user.japanese_level %></h3>
+        <h3 class="content">英語のレベル : <%= @user.english_level %></h3>
+        <h3 class="content">ジェンダー : <%= @user.gender %></h3>
+        <h3 class="content">地域 : <%= @user.region %></h3>
+        <h3 class="content">学習目的 : <%= @user.purpose %></h3>
+        <% unless @user.skype.nil? %>
+          <h3 class="content">Skype URL : <%= link_to "#{@user.name}'s skype", @user.skype %></h3>
+        <% end %>
+        <% unless @user.discord.nil? %>
+          <h3 class="content">Discord ID : <%= @user.discord %> </h3>
+        <% end %>
+        <% unless @user.other.nil? %>
+          <h3 class="content">他サービスのURL : <%= link_to "#{@user.name}'s other service link", @user.other %></h3>
+        <% end %>
+        <div class="self-introduction">
+          <h3>自己紹介</h3>
+          <p><%= @user.self_introduction %></p>
+        </div>
+      </div>
+      
+    </div>
+    
+    
+
+    <div class="user-microposts">
+      <div class="micropost-square">
+        <% if @user.microposts.any? %>
+          <h3>Microposts (<%= @user.microposts.count %>)</h3>
+          <ol class="microposts">
+            <%= render @microposts %>
+          </ol>
+          <div class="pagination-bar">
+            <%= will_paginate @microposts %>
+          </div>  
         <% end %>
       </div>
-      <%= render 'follow_form' if logged_in? %>
-    </h1>
-    
-    
-    
-    
-    
-
-    <div class="user-details">
-      <h3 class="content">Mother Tongue : <%= @user.mother_tongue %></h3>
-      <h3 class="content">Japanese Level: <%= @user.japanese_level %></h3>
-      <h3 class="content">English Level : <%= @user.english_level %></h3>
-      <h3 class="content">Gender : <%= @user.gender %></h3>
-      <h3 class="content">Region : <%= @user.region %></h3>
-      <h3 class="content">Purpose of Learning : <%= @user.purpose %></h3>
-      <% unless @user.skype.nil? %>
-        <h3 class="content">Skype URL : <%= link_to "#{@user.name}'s skype", @user.skype %></h3>
+      <div class="liked-by">
+      <h3>このユーザーにいいねされた投稿</h3>
+      <% @user.liked_posts.each do |post| %>
+      <div class="micropost-wrapper">
+          <li id="micropost-<%= post.id %>" class="micropost-part">
+          <div class="left-part">
+            <% if post.user.image? %>
+              <%= link_to image_tag("#{post.user.image}"), post.user, class: "micropost-user-image user-image" %>
+            <% else %>
+              <%= link_to image_tag("default_user.jpeg"), post.user, class: "micropost-user-image" %>
+            <% end %>  
+          </div>
+          <div class="right-part">
+            <span class="user"><%= link_to post.user.name, post.user %></span>
+            <span class="content">
+              <%= post.content %>
+              <br>
+              <%= image_tag post.display_image if post.image.attached?%>
+            </span>
+            <span class="timestamp">
+            Posted <%= time_ago_in_words(post.created_at) %> ago.
+            </span>
+            <span>
+              <% if current_user?(post.user) %>
+                <%= link_to "削除", micropost_path, method: :delete,
+                                                data: {confirm: "本当に削除しますか？"}, class: "delete-button" %>
+              <% end%>
+            </span>
+            <span class="show-detail"> 
+              <%= link_to "詳細を見る→", micropost_path(post) %>
+            </span>
+            
+          </div>
+        </li>
+      </div>
       <% end %>
-      <% unless @user.discord.nil? %>
-        <h3 class="content">Discord ID : <%= @user.discord %> </h3>
-      <% end %>
-      <% unless @user.other.nil? %>
-        <h3 class="content">Other Service URL : <%= link_to "#{@user.name}'s other service link", @user.other %></h3>
-      <% end %>
-      <div class="self-introduction">
-        <h3>Self Introduction</h3>
-        <p><%= @user.self_introduction %></p>
       </div>
     </div>
     
-  </div>
-  
-  
+    </div>
 
-  <div class="user-microposts">
-    <div class="micropost-square">
-      <% if @user.microposts.any? %>
-        <h3>Microposts (<%= @user.microposts.count %>)</h3>
-        <ol class="microposts">
-          <%= render @microposts %>
-        </ol>
-        <div class="pagination-bar">
-          <%= will_paginate @microposts %>
-        </div>  
+  </div>
+<% else %>
+  <% provide(:title, @user.name) %>
+  <div class="user-wrapper">
+    <div class="icon">
+      <% if @user.image? %>
+        <%= image_tag @user.image.url, class: "user-image" %>
+      <% else %>
+        <%=  image_tag "default_user.jpeg", class: "user-image" %>  
       <% end %>
     </div>
-    <div class="liked-by">
-    <h3>Posts liked by this user</h3>
-    <% @user.liked_posts.each do |post| %>
-    <div class="micropost-wrapper">
-        <li id="micropost-<%= post.id %>" class="micropost-part">
-        <div class="left-part">
-          <% if post.user.image? %>
-            <%= link_to image_tag("#{post.user.image}"), post.user, class: "micropost-user-image user-image" %>
-          <% else %>
-            <%= link_to image_tag("default_user.jpeg"), post.user, class: "micropost-user-image" %>
-          <% end %>  
-        </div>
-        <div class="right-part">
-          <span class="user"><%= link_to post.user.name, post.user %></span>
-          <span class="content">
-            <%= post.content %>
-            <br>
-            <%= image_tag post.display_image if post.image.attached?%>
-          </span>
-          <span class="timestamp">
-          Posted <%= time_ago_in_words(post.created_at) %> ago.
-          </span>
-          <span class="show-detail"> 
-            <%= link_to "show detail→", micropost_path(post) %>
-          </span>
-          <span>
-            <% if current_user?(post.user) %>
-              <%= link_to "delete", micropost_path, method: :delete,
-                                              data: {confirm: "You sure?"}, class: "delete-button" %>
-            <% end%>
-          </span>
-        </div>
-      </li>
-    </div>
-    <% end %>
-    </div>
-  </div>
-  
-  </div>
+    <div class="basic-info">
+      <h1 class="user-name">
+        <%= @user.name %>
 
-</div>
+        <% if @user == current_user %>
+          <div class="setting">
+            <%= link_to "Settings", edit_user_path(current_user), class: "btn btn-primary" %>
+          </div>
+        <% end %>
+        
+        <section class="stats">
+          <%= render 'shared/stats' %>
+        </section>
+
+        <div class="direct-message">
+          <% if current_user %>
+            <% if @user.id == current_user.id %>
+
+            <% else %>
+              <% if @isRoom == true %>
+                <button><p><a href="/rooms/<%= @roomId %>"><i class="far fa-envelope"></i></a></button>
+              <% else %>
+                <%= form_for @room do |f| %>
+                  <%= fields_for @entry do |e| %>
+                    <%= e.hidden_field :user_id, :value=> @user.id %>
+                  <% end %>
+                  <%= f.button :type => "submit", style: 'border-style: none;' do %>
+                    <i class="far fa-envelope"></i>
+                  <% end %>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+        <%= render 'follow_form' if logged_in? %>
+      </h1>
+      
+      
+      
+      
+      
+
+      <div class="user-details">
+        <h3 class="content">Mother Tongue : <%= @user.mother_tongue %></h3>
+        <h3 class="content">Japanese Level: <%= @user.japanese_level %></h3>
+        <h3 class="content">English Level : <%= @user.english_level %></h3>
+        <h3 class="content">Gender : <%= @user.gender %></h3>
+        <h3 class="content">Region : <%= @user.region %></h3>
+        <h3 class="content">Purpose of Learning : <%= @user.purpose %></h3>
+        <% unless @user.skype.nil? %>
+          <h3 class="content">Skype URL : <%= link_to "#{@user.name}'s skype", @user.skype %></h3>
+        <% end %>
+        <% unless @user.discord.nil? %>
+          <h3 class="content">Discord ID : <%= @user.discord %> </h3>
+        <% end %>
+        <% unless @user.other.nil? %>
+          <h3 class="content">Other Service URL : <%= link_to "#{@user.name}'s other service link", @user.other %></h3>
+        <% end %>
+        <div class="self-introduction">
+          <h3>Self Introduction</h3>
+          <p><%= @user.self_introduction %></p>
+        </div>
+      </div>
+      
+    </div>
+    
+    
+
+    <div class="user-microposts">
+      <div class="micropost-square">
+        <% if @user.microposts.any? %>
+          <h3>Microposts (<%= @user.microposts.count %>)</h3>
+          <ol class="microposts">
+            <%= render @microposts %>
+          </ol>
+          <div class="pagination-bar">
+            <%= will_paginate @microposts %>
+          </div>  
+        <% end %>
+      </div>
+      <div class="liked-by">
+      <h3>Posts liked by this user</h3>
+      <% @user.liked_posts.each do |post| %>
+      <div class="micropost-wrapper">
+          <li id="micropost-<%= post.id %>" class="micropost-part">
+          <div class="left-part">
+            <% if post.user.image? %>
+              <%= link_to image_tag("#{post.user.image}"), post.user, class: "micropost-user-image user-image" %>
+            <% else %>
+              <%= link_to image_tag("default_user.jpeg"), post.user, class: "micropost-user-image" %>
+            <% end %>  
+          </div>
+          <div class="right-part">
+            <span class="user"><%= link_to post.user.name, post.user %></span>
+            <span class="content">
+              <%= post.content %>
+              <br>
+              <%= image_tag post.display_image if post.image.attached?%>
+            </span>
+            <span class="timestamp">
+            Posted <%= time_ago_in_words(post.created_at) %> ago.
+            </span>
+            <span class="show-detail"> 
+              <%= link_to "show detail→", micropost_path(post) %>
+            </span>
+            <span>
+              <% if current_user?(post.user) %>
+                <%= link_to "delete", micropost_path, method: :delete,
+                                                data: {confirm: "You sure?"}, class: "delete-button" %>
+              <% end%>
+            </span>
+          </div>
+        </li>
+      </div>
+      <% end %>
+      </div>
+    </div>
+    
+    </div>
+
+  </div>
+<% end %>
