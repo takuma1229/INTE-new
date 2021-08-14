@@ -57,13 +57,13 @@
         <h3 class="content">ジェンダー : <%= @user.gender %></h3>
         <h3 class="content">地域 : <%= @user.region %></h3>
         <h3 class="content">学習目的 : <%= @user.purpose %></h3>
-        <% unless @user.skype.nil? %>
+        <% unless @user.skype == "" %>
           <h3 class="content">Skype URL : <%= link_to "#{@user.name}'s skype", @user.skype %></h3>
         <% end %>
-        <% unless @user.discord.nil? %>
+        <% unless @user.discord == "" %>
           <h3 class="content">Discord ID : <%= @user.discord %> </h3>
         <% end %>
-        <% unless @user.other.nil? %>
+        <% unless @user.other == "" %>
           <h3 class="content">他サービスのURL : <%= link_to "#{@user.name}'s other service link", @user.other %></h3>
         <% end %>
         <div class="self-introduction">
@@ -189,13 +189,13 @@
         <h3 class="content">Gender : <%= @user.gender %></h3>
         <h3 class="content">Region : <%= @user.region %></h3>
         <h3 class="content">Purpose of Learning : <%= @user.purpose %></h3>
-        <% unless @user.skype.nil? %>
+        <% unless @user.skype == "" %>
           <h3 class="content">Skype URL : <%= link_to "#{@user.name}'s skype", @user.skype %></h3>
         <% end %>
-        <% unless @user.discord.nil? %>
+        <% unless @user.discord == "" %>
           <h3 class="content">Discord ID : <%= @user.discord %> </h3>
         <% end %>
-        <% unless @user.other.nil? %>
+        <% unless @user.other == "" %>
           <h3 class="content">Other Service URL : <%= link_to "#{@user.name}'s other service link", @user.other %></h3>
         <% end %>
         <div class="self-introduction">
