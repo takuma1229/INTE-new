@@ -98,6 +98,20 @@ header{
     border-radius: 100px;
     margin-top: 17px;
   }
+  .japanese{
+    background-color: white;
+    color: red;
+  }
+  .english{
+    background-color: aqua;
+    color: white;
+  }
+  .language{
+    width: 45px;
+    float: right;
+    margin-top: 23px;
+    margin-right: 10px;
+  }
   .logout-pc{
     display: none;
   }
