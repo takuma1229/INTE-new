@@ -866,7 +866,7 @@ header{
 }
 
 .user-search-wrapper{
-  padding-top: 60px;
+  padding-top: 80px;
   width: 80%;
   margin: 0 auto;
   text-align: center;
@@ -893,6 +893,9 @@ header{
       height: 50px;
       object-fit: cover;
       border-radius: 1000px;
+    }
+    td{
+      padding-bottom: 20px;
     }
     .user-left{
       float: left;

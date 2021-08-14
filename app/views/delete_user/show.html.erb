@@ -1,11 +1,24 @@
-<% provide(:title, 'delete') %>
+<% if current_user.mother_tongue == "Japanese" %>
+  <% provide(:title, 'delete') %>
 
-<div class="delete-wrapper">
-  <h1>Are you sure to delete this user?</h1>
-  <p>If you delete, all the datas about this user will be lost 
-      and <span>NEVER</span> be restored.</p>
-  <div class="buttons">
-    <%= link_to "No", user_path, class: "btn no"  %>
-    <%= link_to "Delete", "/delete_user/#{@user.id}", method: :delete, data: { confirm: "You Sure?"}, class:"btn delete" %>
+  <div class="delete-wrapper">
+    <h1>本当にこのアカウントを削除しますか？</h1>
+    <p>削除した場合、ユーザーに関する全ての情報は消去され、復旧は<span>できません</span>。</p>
+    <div class="buttons">
+      <%= link_to "いいえ", user_path, class: "btn no"  %>
+      <%= link_to "削除する", "/delete_user/#{@user.id}", method: :delete, data: { confirm: "本当に削除しますか？"}, class:"btn delete" %>
+    </div>
   </div>
-</div>
+<% else %>
+  <% provide(:title, 'delete') %>
+
+  <div class="delete-wrapper">
+    <h1>Are you sure to delete this user?</h1>
+    <p>If you delete, all the datas about this user will be lost 
+        and <span>NEVER</span> be restored.</p>
+    <div class="buttons">
+      <%= link_to "No", user_path, class: "btn no"  %>
+      <%= link_to "Delete", "/delete_user/#{@user.id}", method: :delete, data: { confirm: "You Sure?"}, class:"btn delete" %>
+    </div>
+  </div>
+<% end %>  

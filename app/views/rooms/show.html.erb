@@ -1,47 +1,97 @@
-<div class="dm-wrapper">
-  <h1 class="title">DM</h1>
+<% if current_user.mother_tongue == "Japanese" %>
+  <div class="dm-wrapper">
+    <h1 class="title">DM</h1>
 
-  <div class="members">
-    <h4>Members</h4>
-    <% @entries.each do |e| %>
-      <h5><strong><a href="/users/<%= e.user.id %>"><%= e.user.name%></a></strong></h5>
-    <% end %>
-  </div>
+    <div class="members">
+      <h4>メンバー</h4>
+      <% @entries.each do |e| %>
+        <h5><strong><a href="/users/<%= e.user.id %>"><%= e.user.name%></a></strong></h5>
+      <% end %>
+    </div>
 
-  <div class="new-message-form">
-    <%= form_for @message do |f| %>
-      <%= f.text_field :content, :placeholder => "Enter message." , :size => 70 %>
-      <%= f.hidden_field :room_id, :value => @room.id %>
-      <br>
-      <div class="send-button">
-        <%= f.submit "Send", class:"btn btn-primary send-message" %>
-      </div>  
-    <% end %>
-  </div>
-
-  <div class="messages">
-    <% if @messages.present? %>
-      <% @messages.each do |m| %>
-        <div class="message">
-          <div class="icon">
-            <% if m.user.image? %>
-              <%= image_tag m.user.image.url, class: "user-image" %>
-            <% else %>
-              <%=  image_tag "default_user.jpeg", class: "user-image" %>  
-            <% end %>
-          </div>
-          <small><strong><a href="/users/<%= m.user_id %>"><%= m.user.name %></a></strong></small>
-          <strong><%= m.content %></strong>
+    <div class="new-message-form">
+      <%= form_for @message do |f| %>
+        <%= f.text_field :content, :placeholder => "Enter message." , :size => 70 %>
+        <%= f.hidden_field :room_id, :value => @room.id %>
+        <br>
+        <div class="send-button">
+          <%= f.submit "送信", class:"btn btn-primary send-message" %>
         </div>  
       <% end %>
-    <% else %>
-      <h3 class="text-center">There is no message yet.</h3>
-    <% end %>
-  </div>
+    </div>
 
-  
-  <div class="back-to-dm">
-    <%= link_to "Back to DM list", rooms_path %>
+    <div class="messages">
+      <% if @messages.present? %>
+        <% @messages.each do |m| %>
+          <div class="message">
+            <div class="icon">
+              <% if m.user.image? %>
+                <%= image_tag m.user.image.url, class: "user-image" %>
+              <% else %>
+                <%=  image_tag "default_user.jpeg", class: "user-image" %>  
+              <% end %>
+            </div>
+            <small><strong><a href="/users/<%= m.user_id %>"><%= m.user.name %></a></strong></small>
+            <strong><%= m.content %></strong>
+          </div>  
+        <% end %>
+      <% else %>
+        <h3 class="text-center">まだメッセージはありません。</h3>
+      <% end %>
+    </div>
+
+    
+    <div class="back-to-dm">
+      <%= link_to "DMリストに戻る", rooms_path %>
+    </div>
+    
   </div>
-  
-</div>
+<% else %>  
+    <div class="dm-wrapper">
+    <h1 class="title">DM</h1>
+
+    <div class="members">
+      <h4>Members</h4>
+      <% @entries.each do |e| %>
+        <h5><strong><a href="/users/<%= e.user.id %>"><%= e.user.name%></a></strong></h5>
+      <% end %>
+    </div>
+
+    <div class="new-message-form">
+      <%= form_for @message do |f| %>
+        <%= f.text_field :content, :placeholder => "Enter message." , :size => 70 %>
+        <%= f.hidden_field :room_id, :value => @room.id %>
+        <br>
+        <div class="send-button">
+          <%= f.submit "Send", class:"btn btn-primary send-message" %>
+        </div>  
+      <% end %>
+    </div>
+
+    <div class="messages">
+      <% if @messages.present? %>
+        <% @messages.each do |m| %>
+          <div class="message">
+            <div class="icon">
+              <% if m.user.image? %>
+                <%= image_tag m.user.image.url, class: "user-image" %>
+              <% else %>
+                <%=  image_tag "default_user.jpeg", class: "user-image" %>  
+              <% end %>
+            </div>
+            <small><strong><a href="/users/<%= m.user_id %>"><%= m.user.name %></a></strong></small>
+            <strong><%= m.content %></strong>
+          </div>  
+        <% end %>
+      <% else %>
+        <h3 class="text-center">There's no message yet.</h3>
+      <% end %>
+    </div>
+
+    
+    <div class="back-to-dm">
+      <%= link_to "Back to DM list", rooms_path %>
+    </div>
+    
+  </div>
+<% end %>  
