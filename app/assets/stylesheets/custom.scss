@@ -713,7 +713,7 @@ header{
     }
     input{
       height: 25px;
-      font-size: 25px;
+      font-size: 15px;
     }
     input:invalid{
       border: solid 1px red;
@@ -941,6 +941,7 @@ header{
     width: 80%;
     margin: 0 auto;
     margin-bottom: 20px;
+    font-size: 15px;
   }
   select{
     display: block;
