@@ -61,8 +61,13 @@ class UsersController < ApplicationController
   def detailcreate
     @user = User.find_by(id: params[:id])
     if @user.update(user_update_params)
+      if @user.mother_tongue == "Japanese"
+        flash[:success] = "INTEへようこそ！まずはじめに、右上のSearchボタンを使って誰かをフォローしてみましょう！"
+      else
+        flash[:success] = "Welcome to INTE! Firstly, let's search users to follow. Search button is in the top! "
+      end
       redirect_to @user
-      flash.now[:success] = "Welcome to INTE! Firstly, let's search users to follow. Search button is in the top! "
+      
     else
       flash.now[:danger] = "Self introduction is too long(maximum 400 characters)."
       render 'detail'
