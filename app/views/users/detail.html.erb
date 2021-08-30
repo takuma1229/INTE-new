@@ -2,8 +2,9 @@
 
 <div class="user-detail-wrapper">
   <div class="introduction">
-    <h3>①Authorize your account via sent Email.</h3>
-    <h3>②Let's register your user informations! You can change it later.</h3>
+    <h3>Let's register your user informations! You can change it later.</h3>
+    <h3>ユーザー情報を登録しましょう！（後から変更可能です）</h3>
+
   </div>
 
   <div class="row user-detail-forms">
@@ -12,35 +13,35 @@
 
         
       
-        <%= f.label :mother_tongue, "Mother Tongue" %>
+        <%= f.label :mother_tongue, "Mother Tongue | 母語" %>
         <%= f.select :mother_tongue, [["English", "English"], ["Japanese", "Japanese"], 
         ["Other","other"]], include_blank: "Please select.", class:"form-control" %>
         
-        <%= f.label :japanese_level, "Japanese Level" %>
+        <%= f.label :japanese_level, "Japanese Level | 日本語のレベル" %>
         <%= f.select :japanese_level, [["Beginner", "Beginner"], ["Capable of quite basic communication", "Capable of quite basic communication"], 
         ["Capable of daily conversation","Capable of daily conversation"], ["Capable of advanced conversation","Capable of advanced conversation"], ["Almost native level","Almost native level"],
         ["Native","Native"]], include_blank: "Please select.", class:"form-control" %>
         
-        <%= f.label :english_level, "English Level" %>
+        <%= f.label :english_level, "English Level | 英語のレベル" %>
         <%= f.select :english_level, [["Beginner", "Beginner"], ["Capable of quite basic communication", "Capable of quite basic communication"], 
         ["Capable of daily conversation","Capable of daily conversation"], ["Capable of advanced conversation","Capable of advanced conversation"], ["Almost native level","Almost native level"],
         ["Native","Native"]], include_blank: "Please select.", class:"form-control" %>
         
-        <%= f.label :gender, "Gender" %>
+        <%= f.label :gender, "Gender | ジェンダー" %>
         <%= f.select :gender, [["he/him", "he/him"], ["she/her", "she/her"], 
         ["they/them","they/them"], ["I don't want to tell","I don't want to tell"]], include_blank: "Please select.", class:"form-control" %>
         
-        <%= f.label :region, "Region" %>
+        <%= f.label :region, "Region | 在住地域" %>
         <%= f.select :region, [["Asia", "Asia"], ["Europe", "Europe"], 
         ["Africa","Africa"], ["North/Central America","North/Central America"], ["South America","South America"],
         ["Oceania","Oceania"], ["Other","Other"]], include_blank: "Please select.", class:"form-control" %>
 
-        <%= f.label :purpose, "Purpose of Learning" %>
+        <%= f.label :purpose, "Purpose of Learning | 学習目的" %>
         <%= f.select :purpose, [["Business", "Business"], ["School Classes", "School Classes"], 
         ["Entrance Exam","Entrance Exam"], ["Trip","Trip"], ["Want to talk with Foreingers","Want to talk with Foreingers"], 
         ["Qualifying Exam","Qualifying Exam"], ["Hobby","Hobby"], ["Other", "Other"]], include_blank: "Please select.", class:"form-control" %>
         
-        <%= f.label :self_introduction, "Self Introduction(MAXIMUM 400 characters)" %>
+        <%= f.label :self_introduction, "Self Introduction(MAXIMUM 400 characters) | 自己紹介(400字以内)" %>
         <%= f.text_area :self_introduction, class: 'form-control self-intro', placeholder: "It is recommended that you write in simple English. 英語で書くことをお勧めします。簡単な文でも問題ありません。" %>
         
         <%= f.label :skype, "Skype URL" %>
