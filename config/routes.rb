@@ -13,8 +13,6 @@ Rails.application.routes.draw do
       get 'detail'
       patch 'detailcreate'
       get :following, :followers
-      get 're_activate'
-      patch 're_activate'
     end
     collection do
       get :search

@@ -69,11 +69,7 @@ class UsersController < ApplicationController
     end
   end
   
-  def re_activate
-    @user = User.find_by(id: params[:id])
-    @user.send_activation_email
-  end
-  
+
   
   def edit
     @user = User.find(params[:id])
